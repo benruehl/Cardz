@@ -1,4 +1,4 @@
-package com.hwr_goes_beuth.cardz;
+package com.hwr_goes_beuth.cardz.menu;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.ActionBar;
@@ -8,11 +8,15 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.hwr_goes_beuth.cardz.R;
+import com.hwr_goes_beuth.cardz.core.app.App;
+import com.hwr_goes_beuth.cardz.core.presentation.PresentedActivity;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -87,6 +91,9 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        MainMenuPresenter presenter = getPresenter();
+        ((App) getApplication()).getAppComponent().inject(presenter);
+
         setContentView(R.layout.activity_main_menu);
 
         mVisible = true;
@@ -106,6 +113,11 @@ public class MainMenuActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+    }
+
+    @Override
+    protected MainMenuPresenter createPresenter() {
+        return new MainMenuPresenter();
     }
 
     @Override
@@ -159,5 +171,10 @@ public class MainMenuActivity extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    protected void update() {
+
     }
 }
