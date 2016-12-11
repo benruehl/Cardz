@@ -13,11 +13,12 @@ import javax.inject.Inject;
 public abstract class PresentedActivity<TPresenter extends ActivityPresenter> extends AppCompatActivity {
 
     private TPresenter mPresenter;
-    @Inject PresenterCacheInjectionWrapper mPresenterCacheWrapper;
+    PresenterCacheInjectionWrapper mPresenterCacheWrapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenterCacheWrapper = new PresenterCacheInjectionWrapper();
         ((App) getApplication()).getAppComponent().inject(mPresenterCacheWrapper);
 
         TPresenter newPresenter = createPresenter();

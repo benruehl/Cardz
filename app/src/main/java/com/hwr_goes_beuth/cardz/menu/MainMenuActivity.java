@@ -2,14 +2,12 @@ package com.hwr_goes_beuth.cardz.menu;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.hwr_goes_beuth.cardz.R;
-import com.hwr_goes_beuth.cardz.core.app.App;
 import com.hwr_goes_beuth.cardz.core.presentation.PresentedActivity;
 
 /**
@@ -77,12 +75,10 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+    private final View.OnTouchListener mStartGameTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
+            getPresenter().goToGame(view.getContext());
             return false;
         }
     };
@@ -90,9 +86,6 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        MainMenuPresenter presenter = getPresenter();
-        ((App) getApplication()).getAppComponent().inject(presenter);
 
         setContentView(R.layout.activity_main_menu);
 
@@ -112,7 +105,7 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.start_game_button).setOnTouchListener(mStartGameTouchListener);
     }
 
     @Override
