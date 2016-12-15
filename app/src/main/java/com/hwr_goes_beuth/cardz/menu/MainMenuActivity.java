@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.hwr_goes_beuth.cardz.R;
 import com.hwr_goes_beuth.cardz.core.presentation.PresentedActivity;
@@ -87,13 +89,12 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setupUI();
         setContentView(R.layout.activity_main_menu);
+        //mControlsView = findViewById(R.id.fullscreen_content_controls);
+        //mContentView = findViewById(R.id.fullscreen_content);
 
-        mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
-
-
+/*
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +102,7 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
                 toggle();
             }
         });
-
+*/
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
@@ -120,7 +121,29 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+    }
+
+    private void setupUI() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+
+        mVisible = true;
+
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
     private void toggle() {
@@ -137,7 +160,7 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
         if (actionBar != null) {
             actionBar.hide();
         }
-        mControlsView.setVisibility(View.GONE);
+        //mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
