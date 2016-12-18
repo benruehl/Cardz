@@ -5,6 +5,7 @@ import com.hwr_goes_beuth.cardz.core.modules.ViewModule;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.core.presentation.PresentedActivity;
 import com.hwr_goes_beuth.cardz.core.presentation.PresenterCacheInjectionWrapper;
+import com.hwr_goes_beuth.cardz.gameSetup.GameSetupPresenter;
 import com.hwr_goes_beuth.cardz.menu.MainMenuPresenter;
 
 import javax.inject.Singleton;
@@ -20,4 +21,5 @@ public interface AppComponent {
 
     void inject(PresenterCacheInjectionWrapper presenterCacheWrapper);
     void inject(MainMenuPresenter presenter);
+    void inject(GameSetupPresenter presenter);
 }

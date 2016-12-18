@@ -13,7 +13,7 @@ public class ActivityPresenter {
 
     private List<PresentedActivity> mObservingViews = new ArrayList<>();
 
-    public void register(PresentedActivity activity) {
+    public void registerObserver(PresentedActivity activity) {
         mObservingViews.add(activity);
     }
 

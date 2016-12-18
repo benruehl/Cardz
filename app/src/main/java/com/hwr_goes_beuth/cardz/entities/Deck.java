@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * Created by Project0rion on 15.12.2016.
  */
-public class Deck {
+public class Deck extends Entity{
 
-    private long id;
+    private int faction;
     private List<Card> cards;
 
     public Deck() {

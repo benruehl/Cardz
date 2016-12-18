@@ -5,7 +5,7 @@ import android.content.Context;
 import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
-import com.hwr_goes_beuth.cardz.game.GameActivity;
+import com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity;
 
 import javax.inject.Inject;
 
@@ -18,7 +18,7 @@ public class MainMenuPresenter extends ActivityPresenter {
     ViewManager mViewManager;
 
     public void goToGame(Context sourceView) {
-        mViewManager.switchView(sourceView, GameActivity.class);
+        mViewManager.switchView(sourceView, GameSetupActivity.class);
     }
 
     @Override
