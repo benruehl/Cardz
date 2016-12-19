@@ -1,6 +1,7 @@
 package com.hwr_goes_beuth.cardz.core.app;
 
 import com.hwr_goes_beuth.cardz.core.modules.AppModule;
+import com.hwr_goes_beuth.cardz.core.modules.DataModule;
 import com.hwr_goes_beuth.cardz.core.modules.ViewModule;
 
 /**
@@ -17,6 +18,7 @@ public class App extends android.app.Application {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .viewModule(new ViewModule())
+                .dataModule(new DataModule())
                 .build();
     }
 

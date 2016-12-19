@@ -10,4 +10,11 @@ public class Entity {
     public long getId() {
         return id;
     }
+
+    public void setId(long id) {
+        if (id != 0)
+            throw new IllegalStateException("id of entity cannot be modified");
+
+        this.id = id;
+    }
 }
