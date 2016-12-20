@@ -5,14 +5,14 @@ package com.hwr_goes_beuth.cardz.entities;
  */
 public class Match extends Entity {
 
-    private MatchUser matchUser;
-    private Opponent opponent;
+    private Long matchUserId;
+    private Long opponentId;
 
-    public MatchUser getMatchUser() {
-        return matchUser;
+    public Long getMatchUserId() {
+        return matchUserId;
     }
 
-    public Opponent getOpponent() {
-        return opponent;
+    public Long getOpponentId() {
+        return opponentId;
     }
 }

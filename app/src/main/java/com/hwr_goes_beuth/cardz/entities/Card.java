@@ -32,4 +32,24 @@ public class Card extends Entity {
     public Faction getFaction() {
         return faction;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setFaction(Faction faction) {
+        this.faction = faction;
+    }
 }

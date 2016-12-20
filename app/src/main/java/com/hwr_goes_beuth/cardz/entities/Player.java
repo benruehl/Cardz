@@ -5,7 +5,7 @@ package com.hwr_goes_beuth.cardz.entities;
  */
 public class Player extends Entity {
 
-    private Deck deck;
-    private Hand hand;
-    private Field field;
+    private Long deckId;
+    private Long handId;
+    private Long fieldId;
 }

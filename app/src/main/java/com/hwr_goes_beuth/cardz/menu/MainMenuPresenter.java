@@ -4,9 +4,11 @@ import android.content.Context;
 
 import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
+import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
 import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.entities.Match;
+import com.hwr_goes_beuth.cardz.entities.User;
 import com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity;
 
 import javax.inject.Inject;
@@ -23,7 +25,11 @@ public class MainMenuPresenter extends ActivityPresenter {
     DAOFactory mDAOFactory;
 
     public void goToGame(Context sourceView) {
-        Match unfinishedMatch = mDAOFactory.getUserDAO().getOrCreateRecentUser().getCurrentMatch();
+        UserDAO userDAO = mDAOFactory.getUserDAO();
+
+        User recentUser = userDAO.getOrCreateRecentUser();
+        Match unfinishedMatch = userDAO.getCurrentMatch(recentUser);
+
         mViewManager.switchView(sourceView, GameSetupActivity.class);
     }
 

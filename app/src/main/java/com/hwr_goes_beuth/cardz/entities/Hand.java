@@ -1,5 +1,6 @@
 package com.hwr_goes_beuth.cardz.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,5 +8,13 @@ import java.util.List;
  */
 public class Hand extends Entity {
 
-    List<Card> cards;
+    List<Long> cardIds;
+
+    public Hand() {
+        cardIds = new ArrayList<>();
+    }
+
+    public List<Long> getCardIds() {
+        return cardIds;
+    }
 }

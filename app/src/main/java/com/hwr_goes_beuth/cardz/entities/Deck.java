@@ -11,18 +11,18 @@ import java.util.List;
 public class Deck extends Entity{
 
     private Faction faction;
-    private List<Card> cards;
+    private List<Long> cardIds;
 
     public Deck() {
-        cards = new ArrayList<>();
+        cardIds = new ArrayList<>();
     }
 
     public Faction getFaction() {
         return faction;
     }
 
-    public List<Card> getCards() {
-        return cards;
+    public List<Long> getCardIds() {
+        return cardIds;
     }
 
     public void setFaction(Faction faction) {

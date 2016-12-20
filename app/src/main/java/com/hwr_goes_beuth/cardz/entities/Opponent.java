@@ -6,5 +6,5 @@ package com.hwr_goes_beuth.cardz.entities;
 public class Opponent extends Player {
 
     private String name;
-    private OpponentBehavior behavior;
+    private Long behaviorId;
 }

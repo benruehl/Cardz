@@ -9,40 +9,40 @@ import java.util.List;
  */
 public class User extends Entity {
 
-    private List<Card> collectedCards;
-    private Match currentMatch;
-    private Deck sharkDeck;
-    private Deck raptorDeck;
+    private List<Long> collectedCardIds;
+    private Long currentMatchId;
+    private Long sharkDeckId;
+    private Long raptorDeckId;
 
     public User() {
-        collectedCards = new ArrayList<>();
+        collectedCardIds = new ArrayList<>();
     }
 
-    public List<Card> getCollectedCards() {
-        return collectedCards;
+    public List<Long> getCollectedCardIds() {
+        return collectedCardIds;
     }
 
-    public Match getCurrentMatch() {
-        return currentMatch;
+    public Long getCurrentMatchId() {
+        return currentMatchId;
     }
 
-    public Deck getSharkDeck() {
-        return sharkDeck;
+    public Long getSharkDeckId() {
+        return sharkDeckId;
     }
 
-    public Deck getRaptorDeck() {
-        return raptorDeck;
+    public Long getRaptorDeckId() {
+        return raptorDeckId;
     }
 
-    public void setCurrentMatch(Match currentMatch) {
-        this.currentMatch = currentMatch;
+    public void setCurrentMatchId(Long currentMatchId) {
+        this.currentMatchId = currentMatchId;
     }
 
-    public void setSharkDeck(Deck sharkDeck) {
-        this.sharkDeck = sharkDeck;
+    public void setSharkDeckId(Long sharkDeckId) {
+        this.sharkDeckId = sharkDeckId;
     }
 
-    public void setRaptorDeck(Deck raptorDeck) {
-        this.raptorDeck = raptorDeck;
+    public void setRaptorDeckId(Long raptorDeckId) {
+        this.raptorDeckId = raptorDeckId;
     }
 }
