@@ -36,7 +36,8 @@ public class SharedPrefsCardDAO implements CardDAO {
     }
 
     @Override
-    public void deleteCard(Card card) {
+    public void deleteCard(long cardId) {
+        Card card = getCard(cardId);
         context.deleteFromPrefs(card);
     }
 }

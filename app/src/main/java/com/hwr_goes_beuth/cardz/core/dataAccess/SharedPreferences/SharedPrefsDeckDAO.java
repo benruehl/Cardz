@@ -61,4 +61,15 @@ public class SharedPrefsDeckDAO implements DeckDAO {
 
         return newDeck;
     }
+
+    @Override
+    public void deleteDeck(long deckId) {
+        Deck deck = getDeck(deckId);
+
+        for (long cardId : deck.getCardIds()) {
+            cardDAO.deleteCard(cardId);
+        }
+
+        context.deleteFromPrefs(deck);
+    }
 }

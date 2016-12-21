@@ -1,7 +1,9 @@
 package com.hwr_goes_beuth.cardz.menu;
 
+import android.app.Application;
 import android.content.Context;
 
+import com.hwr_goes_beuth.cardz.R;
 import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
@@ -11,6 +13,8 @@ import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
 import com.hwr_goes_beuth.cardz.game.GameActivity;
 import com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity;
+
+import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 
@@ -25,16 +29,73 @@ public class MainMenuPresenter extends ActivityPresenter {
     @Inject
     DAOFactory mDAOFactory;
 
-    public void goToGame(Context sourceView) {
+    public void startGame(final Context sourceView) {
         UserDAO userDAO = mDAOFactory.getUserDAO();
 
-        User recentUser = userDAO.getOrCreateCurrentUser();
-        Match unfinishedMatch = userDAO.getCurrentMatch(recentUser);
+        final User recentUser = userDAO.getOrCreateCurrentUser();
+        final Match unfinishedMatch = userDAO.getCurrentMatch(recentUser);
 
-        if (unfinishedMatch != null)
-            mViewManager.switchView(sourceView, GameActivity.class);
-        else
-            mViewManager.switchView(sourceView, GameSetupActivity.class);
+        if (unfinishedMatch == null)
+            startNewMatch(sourceView);
+        else {
+            mViewManager.confirm(sourceView)
+                    .title(sourceView.getString(R.string.confirm_resume_match_title))
+                    .content(sourceView.getString(R.string.confirm_resume_match_content))
+                    .positiveButtonText(sourceView.getString(R.string.confirm_resume_match_positive))
+                    .negativeButtonText(sourceView.getString(R.string.confirm_resume_match_negative))
+                    .isCancelable(true)
+                    .onConfirm(new Callable() {
+                        @Override
+                        public Object call() throws Exception {
+                            resumeMatch(sourceView);
+                            return null;
+                        }
+                    })
+                    .onRefuse(new Callable() {
+                        @Override
+                        public Object call() throws Exception {
+                            deleteCurrentMatch(recentUser);
+                            startNewMatch(sourceView);
+                            return null;
+                        }
+                    })
+                    .build().show();
+        }
+
+    }
+
+    private void startNewMatch(Context sourceView) {
+        mViewManager.switchView(sourceView, GameSetupActivity.class);
+    }
+
+    private void deleteCurrentMatch(User user) {
+        mDAOFactory.getUserDAO().deleteCurrentMatch(user);
+    }
+
+    private void resumeMatch(Context sourceView) {
+        mViewManager.switchView(sourceView, GameActivity.class);
+    }
+
+    public void resetUserData(final Context sourceView) {
+        mViewManager.confirm(sourceView)
+                .title(sourceView.getString(R.string.confirm_reset_user_data_title))
+                .content(sourceView.getString(R.string.confirm_reset_user_data_content))
+                .positiveButtonText(sourceView.getString(R.string.confirm_reset_user_data_positive))
+                .negativeButtonText(sourceView.getString(R.string.confirm_reset_user_data_negative))
+                .isCancelable(true)
+                .onConfirm(new Callable() {
+                    @Override
+                    public Object call() throws Exception {
+                        resetUserData();
+                        return null;
+                    }
+                })
+                .build().show();
+    }
+
+    private void resetUserData() {
+        mDAOFactory.getUserDAO().deleteCurrentUser();
+        mDAOFactory.getUserDAO().getOrCreateCurrentUser();
     }
 
     @Override

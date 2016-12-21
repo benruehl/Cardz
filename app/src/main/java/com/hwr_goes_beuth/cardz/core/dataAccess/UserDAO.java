@@ -14,9 +14,11 @@ public interface UserDAO {
 
     User getOrCreateCurrentUser();
     void updateUser(User user);
+    void deleteCurrentUser();
 
     List<Card> getCollectedCards(User user);
     Match getCurrentMatch(User user);
     Deck getRaptorDeck(User user);
     Deck getSharkDeck(User user);
+    void deleteCurrentMatch(User user);
 }

@@ -22,27 +22,27 @@ public class User extends Entity {
         return collectedCardIds;
     }
 
-    public Long getCurrentMatchId() {
+    public long getCurrentMatchId() {
         return currentMatchId;
     }
 
-    public Long getSharkDeckId() {
+    public long getSharkDeckId() {
         return sharkDeckId;
     }
 
-    public Long getRaptorDeckId() {
+    public long getRaptorDeckId() {
         return raptorDeckId;
     }
 
-    public void setCurrentMatchId(Long currentMatchId) {
+    public void setCurrentMatchId(long currentMatchId) {
         this.currentMatchId = currentMatchId;
     }
 
-    public void setSharkDeckId(Long sharkDeckId) {
+    public void setSharkDeckId(long sharkDeckId) {
         this.sharkDeckId = sharkDeckId;
     }
 
-    public void setRaptorDeckId(Long raptorDeckId) {
+    public void setRaptorDeckId(long raptorDeckId) {
         this.raptorDeckId = raptorDeckId;
     }
 }

@@ -8,24 +8,19 @@ public class Match extends Entity {
     private long matchUserId;
     private long opponentId;
 
-    public Match() {
-        matchUserId = 0L;
-        opponentId = 0L;
-    }
-
-    public Long getMatchUserId() {
+    public long getMatchUserId() {
         return matchUserId;
     }
 
-    public Long getOpponentId() {
+    public long getOpponentId() {
         return opponentId;
     }
 
-    public void setMatchUserId(Long matchUserId) {
+    public void setMatchUserId(long matchUserId) {
         this.matchUserId = matchUserId;
     }
 
-    public void setOpponentId(Long opponentId) {
+    public void setOpponentId(long opponentId) {
         this.opponentId = opponentId;
     }
 }

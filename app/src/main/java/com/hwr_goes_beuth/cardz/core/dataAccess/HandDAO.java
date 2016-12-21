@@ -12,6 +12,7 @@ public interface HandDAO {
 
     Hand getHand(long id);
     Hand createHand();
+    void deleteHand(long handId);
 
     List<Card> getCards(Hand hand);
 }

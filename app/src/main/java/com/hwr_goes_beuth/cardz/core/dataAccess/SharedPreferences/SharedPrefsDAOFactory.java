@@ -85,7 +85,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public FieldDAO getFieldDAO() {
         if (fieldDAO == null)
-            fieldDAO = new SharedPrefsFieldDAO(daoContext);
+            fieldDAO = new SharedPrefsFieldDAO(daoContext, getCardDAO());
 
         return fieldDAO;
     }

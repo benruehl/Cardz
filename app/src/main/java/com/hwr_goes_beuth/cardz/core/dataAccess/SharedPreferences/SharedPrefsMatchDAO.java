@@ -45,6 +45,16 @@ public class SharedPrefsMatchDAO implements MatchDAO {
     }
 
     @Override
+    public void deleteMatch(long matchId) {
+        Match match = getMatch(matchId);
+
+        matchUserDAO.deleteMatchUser(match.getMatchUserId());
+        opponentDAO.deleteOpponent(match.getOpponentId());
+
+        context.deleteFromPrefs(match);
+    }
+
+    @Override
     public MatchUser getMatchUser(Match match) {
         return matchUserDAO.getMatchUser(match.getMatchUserId());
     }

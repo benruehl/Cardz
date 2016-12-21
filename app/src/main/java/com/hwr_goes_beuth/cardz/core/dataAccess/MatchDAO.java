@@ -11,6 +11,7 @@ public interface MatchDAO {
 
     Match getMatch(long id);
     Match createMatch();
+    void deleteMatch(long matchId);
 
     MatchUser getMatchUser(Match match);
     Opponent getOpponent(Match match);

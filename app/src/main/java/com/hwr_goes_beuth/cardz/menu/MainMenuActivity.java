@@ -83,7 +83,18 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
             if (motionEvent.getAction() != MotionEvent.ACTION_DOWN)
                 return true;
 
-            getPresenter().goToGame(view.getContext());
+            getPresenter().startGame(view.getContext());
+            return false;
+        }
+    };
+
+    private final View.OnTouchListener mResetUserDataTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() != MotionEvent.ACTION_DOWN)
+                return true;
+
+            getPresenter().resetUserData(view.getContext());
             return false;
         }
     };
@@ -110,6 +121,7 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.start_game_button).setOnTouchListener(mStartGameTouchListener);
+        findViewById(R.id.reset_user_data_button).setOnTouchListener(mResetUserDataTouchListener);
     }
 
     @Override

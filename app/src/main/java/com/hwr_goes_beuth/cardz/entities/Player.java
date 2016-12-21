@@ -9,27 +9,27 @@ public class Player extends Entity {
     private long handId;
     private long fieldId;
 
-    public Long getDeckId() {
+    public long getDeckId() {
         return deckId;
     }
 
-    public Long getHandId() {
+    public long getHandId() {
         return handId;
     }
 
-    public Long getFieldId() {
+    public long getFieldId() {
         return fieldId;
     }
 
-    public void setDeckId(Long deckId) {
+    public void setDeckId(long deckId) {
         this.deckId = deckId;
     }
 
-    public void setHandId(Long handId) {
+    public void setHandId(long handId) {
         this.handId = handId;
     }
 
-    public void setFieldId(Long fieldId) {
+    public void setFieldId(long fieldId) {
         this.fieldId = fieldId;
     }
 }

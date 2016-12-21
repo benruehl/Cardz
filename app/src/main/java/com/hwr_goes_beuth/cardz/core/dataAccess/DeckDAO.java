@@ -14,6 +14,7 @@ public interface DeckDAO {
     Deck getDeck(long id);
     Deck createRaptorDeck();
     Deck createSharkDeck();
+    void deleteDeck(long deckId);
 
     List<Card> getCards(Deck deck);
 }

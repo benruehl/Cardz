@@ -38,6 +38,17 @@ public class SharedPrefsHandDAO implements HandDAO {
     }
 
     @Override
+    public void deleteHand(long handId) {
+        Hand hand = getHand(handId);
+
+        for (long cardId : hand.getCardIds()) {
+            cardDAO.deleteCard(cardId);
+        }
+
+        context.deleteFromPrefs(hand);
+    }
+
+    @Override
     public List<Card> getCards(Hand hand) {
         List<Card> cards = new ArrayList<>();
 

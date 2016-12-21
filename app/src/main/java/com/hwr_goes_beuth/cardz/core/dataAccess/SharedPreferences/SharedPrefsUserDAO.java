@@ -47,6 +47,11 @@ public class SharedPrefsUserDAO implements UserDAO {
         context.saveToPrefs(user);
     }
 
+    @Override
+    public void deleteCurrentUser() {
+        context.clearPrefs();
+    }
+
     private User getRecentUser() {
         return context.loadFromPrefs(User.class, 0);
     }
@@ -93,5 +98,12 @@ public class SharedPrefsUserDAO implements UserDAO {
     @Override
     public Deck getSharkDeck(User user) {
         return deckDAO.getDeck(user.getSharkDeckId());
+    }
+
+    @Override
+    public void deleteCurrentMatch(User user) {
+        matchDAO.deleteMatch(user.getCurrentMatchId());
+        user.setCurrentMatchId(0);
+        updateUser(user);
     }
 }

@@ -48,7 +48,14 @@ public class SharedPrefsDAOContext {
 
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.putString(lastId_Key, Long.toString(lastAssignedId));
+        prefsEditor.commit();
 
         return lastAssignedId;
+    }
+
+    public void clearPrefs() {
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.clear();
+        prefsEditor.commit();
     }
 }

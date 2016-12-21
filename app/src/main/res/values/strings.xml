@@ -1,6 +1,19 @@
 <resources>
     <string name="app_name">RoboSharks vs. MechaRaptors</string>
 
+    <!-- Main Menu -->
     <string name="start_game_button">Start game</string>
+
+    <string name="confirm_resume_match_title">Resume match</string>
+    <string name="confirm_resume_match_content">Do you want to resume your last match?</string>
+    <string name="confirm_resume_match_positive">Resume</string>
+    <string name="confirm_resume_match_negative">New match</string>
+
+    <string name="confirm_reset_user_data_title">Reset game</string>
+    <string name="confirm_reset_user_data_content">Are you sure you want to delete all saved data?</string>
+    <string name="confirm_reset_user_data_positive">Delete</string>
+    <string name="confirm_reset_user_data_negative">Cancel</string>
+
+    <!-- Game Setup -->
     <string name="start_match_button">Start match</string>
 </resources>

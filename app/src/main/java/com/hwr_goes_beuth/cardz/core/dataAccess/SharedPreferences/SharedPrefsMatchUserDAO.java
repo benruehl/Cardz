@@ -60,4 +60,15 @@ public class SharedPrefsMatchUserDAO implements MatchUserDAO {
 
         return newMatchUser;
     }
+
+    @Override
+    public void deleteMatchUser(long matchUserId) {
+        MatchUser matchUser = getMatchUser(matchUserId);
+
+        deckDAO.deleteDeck(matchUser.getDeckId());
+        fieldDAO.deleteField(matchUser.getFieldId());
+        handDAO.deleteHand(matchUser.getHandId());
+
+        context.deleteFromPrefs(matchUser);
+    }
 }

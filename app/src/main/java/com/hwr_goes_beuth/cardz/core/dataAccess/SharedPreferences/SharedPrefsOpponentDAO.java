@@ -9,7 +9,6 @@ import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Opponent;
-import com.hwr_goes_beuth.cardz.entities.enums.Faction;
 
 /**
  * Created by Project0rion on 19.12.2016.
@@ -43,6 +42,17 @@ public class SharedPrefsOpponentDAO implements OpponentDAO {
     public Opponent createRaptorOpponent() {
         Deck opponentDeck = deckDAO.createRaptorDeck();
         return createOpponent(opponentDeck);
+    }
+
+    @Override
+    public void deleteOpponent(long opponentId) {
+        Opponent opponent = getOpponent(opponentId);
+
+        deckDAO.deleteDeck(opponent.getDeckId());
+        fieldDAO.deleteField(opponent.getFieldId());
+        handDAO.deleteHand(opponent.getHandId());
+
+        context.deleteFromPrefs(opponent);
     }
 
     private Opponent createOpponent(Deck deck) {

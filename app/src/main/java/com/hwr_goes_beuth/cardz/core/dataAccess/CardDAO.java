@@ -10,5 +10,5 @@ public interface CardDAO {
     Card getCard(long id);
     Card createCard();
     void updateCard(Card card);
-    void deleteCard(Card card);
+    void deleteCard(long cardId);
 }

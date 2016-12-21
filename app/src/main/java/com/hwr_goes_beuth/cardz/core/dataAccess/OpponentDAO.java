@@ -10,4 +10,5 @@ public interface OpponentDAO {
     Opponent getOpponent(long id);
     Opponent createSharkOpponent();
     Opponent createRaptorOpponent();
+    void deleteOpponent(long opponentId);
 }

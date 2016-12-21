@@ -19,6 +19,19 @@
         android:layout_alignParentStart="true" />
 
     <Button
+        android:id="@+id/reset_user_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#50000000"
+        android:text="Reset"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
         android:id="@+id/start_game_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

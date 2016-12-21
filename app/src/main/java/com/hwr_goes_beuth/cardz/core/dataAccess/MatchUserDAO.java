@@ -10,4 +10,5 @@ public interface MatchUserDAO {
     MatchUser getMatchUser(long id);
     MatchUser createSharkMatchUser();
     MatchUser createRaptorMatchUser();
+    void deleteMatchUser(long matchUserId);
 }
