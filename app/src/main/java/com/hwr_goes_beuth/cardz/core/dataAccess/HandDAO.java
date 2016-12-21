@@ -10,5 +10,8 @@ import java.util.List;
  */
 public interface HandDAO {
 
+    Hand getHand(long id);
+    Hand createHand();
+
     List<Card> getCards(Hand hand);
 }

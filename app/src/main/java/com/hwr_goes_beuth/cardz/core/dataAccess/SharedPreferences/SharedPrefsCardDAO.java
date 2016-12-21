@@ -4,38 +4,39 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.hwr_goes_beuth.cardz.core.dataAccess.CardDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
 import com.hwr_goes_beuth.cardz.entities.Card;
-import com.hwr_goes_beuth.cardz.entities.User;
 
 /**
  * Created by Project0rion on 19.12.2016.
  */
-public class SharedPrefsCardDAO extends AbstractSharedPrefsDAO implements CardDAO {
+public class SharedPrefsCardDAO implements CardDAO {
 
-    public SharedPrefsCardDAO(SharedPreferences sharedPreferences, Gson gson) {
-        super(sharedPreferences, gson);
+    private SharedPrefsDAOContext context;
+
+    public SharedPrefsCardDAO(SharedPrefsDAOContext context) {
+        this.context = context;
     }
 
     @Override
     public Card getCard(long id) {
-        return loadFromPrefs(Card.class, id);
+        return context.loadFromPrefs(Card.class, id);
     }
 
     @Override
     public Card createCard() {
         Card newCard = new Card();
-        saveToPrefs(newCard);
+        newCard.setId(context.getNextId());
+        context.saveToPrefs(newCard);
         return newCard;
     }
 
     @Override
     public void updateCard(Card card) {
-        saveToPrefs(card);
+        context.saveToPrefs(card);
     }
 
     @Override
     public void deleteCard(Card card) {
-        deleteFromPrefs(card);
+        context.deleteFromPrefs(card);
     }
 }

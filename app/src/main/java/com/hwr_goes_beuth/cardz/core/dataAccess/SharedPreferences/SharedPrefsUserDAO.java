@@ -3,6 +3,7 @@ package com.hwr_goes_beuth.cardz.core.dataAccess.SharedPreferences;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.hwr_goes_beuth.cardz.core.dataAccess.CardDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DeckDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
@@ -11,22 +12,28 @@ import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Project0rion on 19.12.2016.
  */
-public class SharedPrefsUserDAO extends AbstractSharedPrefsDAO implements UserDAO {
+public class SharedPrefsUserDAO implements UserDAO {
 
-    DeckDAO deckDAO;
+    private SharedPrefsDAOContext context;
+    private MatchDAO matchDAO;
+    private DeckDAO deckDAO;
+    private CardDAO cardDAO;
 
-    public SharedPrefsUserDAO(SharedPreferences sharedPreferences, Gson gson, DeckDAO deckDAO) {
-        super(sharedPreferences, gson);
+    public SharedPrefsUserDAO(SharedPrefsDAOContext context, MatchDAO matchDAO, DeckDAO deckDAO, CardDAO cardDAO) {
+        this.context = context;
+        this.matchDAO = matchDAO;
         this.deckDAO = deckDAO;
+        this.cardDAO = cardDAO;
     }
 
     @Override
-    public User getOrCreateRecentUser() {
+    public User getOrCreateCurrentUser() {
         User recentUser = getRecentUser();
 
         if (recentUser == null)
@@ -35,12 +42,20 @@ public class SharedPrefsUserDAO extends AbstractSharedPrefsDAO implements UserDA
         return recentUser;
     }
 
+    @Override
+    public void updateUser(User user) {
+        context.saveToPrefs(user);
+    }
+
     private User getRecentUser() {
-        return loadFromPrefs(User.class, 0);
+        return context.loadFromPrefs(User.class, 0);
     }
 
     private User createUser() {
         User newUser = new User();
+
+        /* user has always id = 0 because only a single user is supported */
+        // newUser.setId(context.getNextId());
 
         Deck newRaptorDeck = deckDAO.createRaptorDeck();
         Deck newSharkDeck = deckDAO.createSharkDeck();
@@ -48,28 +63,35 @@ public class SharedPrefsUserDAO extends AbstractSharedPrefsDAO implements UserDA
         newUser.setRaptorDeckId(newRaptorDeck.getId());
         newUser.setSharkDeckId(newSharkDeck.getId());
 
-        saveToPrefs(newUser);
+        context.saveToPrefs(newUser);
 
         return newUser;
     }
 
     @Override
     public List<Card> getCollectedCards(User user) {
-        return null;
+        List<Card> cards = new ArrayList<>();
+
+        for (long cardId : user.getCollectedCardIds()) {
+            Card card = cardDAO.getCard(cardId);
+            cards.add(card);
+        }
+
+        return cards;
     }
 
     @Override
     public Match getCurrentMatch(User user) {
-        return null;
+        return matchDAO.getMatch(user.getCurrentMatchId());
     }
 
     @Override
     public Deck getRaptorDeck(User user) {
-        return null;
+        return deckDAO.getDeck(user.getRaptorDeckId());
     }
 
     @Override
     public Deck getSharkDeck(User user) {
-        return null;
+        return deckDAO.getDeck(user.getSharkDeckId());
     }
 }

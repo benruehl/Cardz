@@ -2,5 +2,5 @@
     <string name="app_name">RoboSharks vs. MechaRaptors</string>
 
     <string name="start_game_button">Start game</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="start_match_button">Start match</string>
 </resources>

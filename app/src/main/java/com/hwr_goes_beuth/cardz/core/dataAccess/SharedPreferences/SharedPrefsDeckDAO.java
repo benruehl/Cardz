@@ -15,13 +15,13 @@ import java.util.List;
 /**
  * Created by Project0rion on 19.12.2016.
  */
-public class SharedPrefsDeckDAO extends AbstractSharedPrefsDAO implements DeckDAO {
+public class SharedPrefsDeckDAO implements DeckDAO {
 
-    CardDAO cardDAO;
+    private SharedPrefsDAOContext context;
+    private CardDAO cardDAO;
 
-    public SharedPrefsDeckDAO(SharedPreferences sharedPreferences, Gson gson, CardDAO cardDAO) {
-        super(sharedPreferences, gson);
-
+    public SharedPrefsDeckDAO(SharedPrefsDAOContext context, CardDAO cardDAO) {
+        this.context = context;
         this.cardDAO = cardDAO;
     }
 
@@ -38,6 +38,11 @@ public class SharedPrefsDeckDAO extends AbstractSharedPrefsDAO implements DeckDA
     }
 
     @Override
+    public Deck getDeck(long id) {
+        return context.loadFromPrefs(Deck.class, id);
+    }
+
+    @Override
     public Deck createRaptorDeck() {
         return createDeck(Faction.Raptor);
     }
@@ -49,9 +54,10 @@ public class SharedPrefsDeckDAO extends AbstractSharedPrefsDAO implements DeckDA
 
     private Deck createDeck(Faction faction) {
         Deck newDeck = new Deck();
+        newDeck.setId(context.getNextId());
         newDeck.setFaction(faction);
 
-        saveToPrefs(newDeck);
+        context.saveToPrefs(newDeck);
 
         return newDeck;
     }

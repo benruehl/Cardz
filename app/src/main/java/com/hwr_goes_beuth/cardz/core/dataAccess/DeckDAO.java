@@ -11,7 +11,9 @@ import java.util.List;
  */
 public interface DeckDAO {
 
-    List<Card> getCards(Deck deck);
+    Deck getDeck(long id);
     Deck createRaptorDeck();
     Deck createSharkDeck();
+
+    List<Card> getCards(Deck deck);
 }

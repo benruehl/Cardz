@@ -12,7 +12,7 @@ public class Entity {
     }
 
     public void setId(long id) {
-        if (id != 0)
+        if (this.id != 0)
             throw new IllegalStateException("id of entity cannot be modified");
 
         this.id = id;

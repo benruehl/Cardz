@@ -12,7 +12,8 @@ import java.util.List;
  */
 public interface UserDAO {
 
-    User getOrCreateRecentUser();
+    User getOrCreateCurrentUser();
+    void updateUser(User user);
 
     List<Card> getCollectedCards(User user);
     Match getCurrentMatch(User user);

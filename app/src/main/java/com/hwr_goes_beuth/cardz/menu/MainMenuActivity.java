@@ -80,6 +80,9 @@ public class MainMenuActivity extends PresentedActivity<MainMenuPresenter> {
     private final View.OnTouchListener mStartGameTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() != MotionEvent.ACTION_DOWN)
+                return true;
+
             getPresenter().goToGame(view.getContext());
             return false;
         }

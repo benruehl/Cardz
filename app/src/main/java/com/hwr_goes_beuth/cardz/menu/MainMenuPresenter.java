@@ -9,6 +9,7 @@ import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.game.GameActivity;
 import com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity;
 
 import javax.inject.Inject;
@@ -27,10 +28,13 @@ public class MainMenuPresenter extends ActivityPresenter {
     public void goToGame(Context sourceView) {
         UserDAO userDAO = mDAOFactory.getUserDAO();
 
-        User recentUser = userDAO.getOrCreateRecentUser();
+        User recentUser = userDAO.getOrCreateCurrentUser();
         Match unfinishedMatch = userDAO.getCurrentMatch(recentUser);
 
-        mViewManager.switchView(sourceView, GameSetupActivity.class);
+        if (unfinishedMatch != null)
+            mViewManager.switchView(sourceView, GameActivity.class);
+        else
+            mViewManager.switchView(sourceView, GameSetupActivity.class);
     }
 
     @Override

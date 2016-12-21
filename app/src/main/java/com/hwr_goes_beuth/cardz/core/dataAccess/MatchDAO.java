@@ -9,6 +9,9 @@ import com.hwr_goes_beuth.cardz.entities.Opponent;
  */
 public interface MatchDAO {
 
+    Match getMatch(long id);
+    Match createMatch();
+
     MatchUser getMatchUser(Match match);
     Opponent getOpponent(Match match);
 }

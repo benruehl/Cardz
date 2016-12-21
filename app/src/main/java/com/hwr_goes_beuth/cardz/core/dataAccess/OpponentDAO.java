@@ -8,4 +8,6 @@ import com.hwr_goes_beuth.cardz.entities.Opponent;
 public interface OpponentDAO {
 
     Opponent getOpponent(long id);
+    Opponent createSharkOpponent();
+    Opponent createRaptorOpponent();
 }

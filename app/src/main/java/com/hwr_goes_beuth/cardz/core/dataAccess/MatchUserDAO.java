@@ -8,4 +8,6 @@ import com.hwr_goes_beuth.cardz.entities.MatchUser;
 public interface MatchUserDAO {
 
     MatchUser getMatchUser(long id);
+    MatchUser createSharkMatchUser();
+    MatchUser createRaptorMatchUser();
 }

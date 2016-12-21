@@ -1,8 +1,6 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess.SharedPreferences;
 
-import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
 import com.hwr_goes_beuth.cardz.core.dataAccess.CardDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.HandDAO;
 import com.hwr_goes_beuth.cardz.entities.Card;
@@ -14,14 +12,29 @@ import java.util.List;
 /**
  * Created by Project0rion on 19.12.2016.
  */
-public class SharedPrefsHandDAO extends AbstractSharedPrefsDAO implements HandDAO {
+public class SharedPrefsHandDAO implements HandDAO {
 
-    CardDAO cardDAO;
+    private SharedPrefsDAOContext context;
+    private CardDAO cardDAO;
 
-    public SharedPrefsHandDAO(SharedPreferences sharedPreferences, Gson gson, CardDAO cardDAO) {
-        super(sharedPreferences, gson);
-
+    public SharedPrefsHandDAO(SharedPrefsDAOContext context, CardDAO cardDAO) {
+        this.context = context;
         this.cardDAO = cardDAO;
+    }
+
+    @Override
+    public Hand getHand(long id) {
+        return context.loadFromPrefs(Hand.class, id);
+    }
+
+    @Override
+    public Hand createHand() {
+        Hand newHand = new Hand();
+        newHand.setId(context.getNextId());
+
+        context.saveToPrefs(newHand);
+
+        return newHand;
     }
 
     @Override

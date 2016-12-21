@@ -18,28 +18,26 @@ import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
  */
 public class SharedPrefsDAOFactory extends DAOFactory {
 
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
+    private SharedPrefsDAOContext daoContext;
 
-    UserDAO userDAO;
-    MatchDAO matchDAO;
-    MatchUserDAO matchUserDAO;
-    OpponentDAO opponentDAO;
-    DeckDAO deckDAO;
-    HandDAO handDAO;
-    FieldDAO fieldDAO;
-    CardDAO cardDAO;
+    private UserDAO userDAO;
+    private MatchDAO matchDAO;
+    private MatchUserDAO matchUserDAO;
+    private OpponentDAO opponentDAO;
+    private DeckDAO deckDAO;
+    private HandDAO handDAO;
+    private FieldDAO fieldDAO;
+    private CardDAO cardDAO;
 
     public SharedPrefsDAOFactory(SharedPreferences prefs, Gson gson) {
-        sharedPreferences = prefs;
-        this.gson = gson;
+        daoContext = new SharedPrefsDAOContext(prefs, gson);
     }
 
     @Override
     public UserDAO getUserDAO() {
 
         if (userDAO == null)
-            userDAO = new SharedPrefsUserDAO(sharedPreferences, gson, getDeckDAO());
+            userDAO = new SharedPrefsUserDAO(daoContext, getMatchDAO(), getDeckDAO(), getCardDAO());
 
         return userDAO;
     }
@@ -47,7 +45,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public MatchDAO getMatchDAO() {
         if (matchDAO == null)
-            matchDAO = new SharedPrefsMatchDAO(sharedPreferences, gson, getMatchUserDAO(), getOpponentDAO());
+            matchDAO = new SharedPrefsMatchDAO(daoContext, getMatchUserDAO(), getOpponentDAO());
 
         return matchDAO;
     }
@@ -55,7 +53,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public MatchUserDAO getMatchUserDAO() {
         if (matchUserDAO == null)
-            matchUserDAO = new SharedPrefsMatchUserDAO(sharedPreferences, gson);
+            matchUserDAO = new SharedPrefsMatchUserDAO(daoContext, getDeckDAO(), getFieldDAO(), getHandDAO());
 
         return matchUserDAO;
     }
@@ -63,7 +61,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public OpponentDAO getOpponentDAO() {
         if (opponentDAO == null)
-            opponentDAO = new SharedPrefsOpponentDAO(sharedPreferences, gson);
+            opponentDAO = new SharedPrefsOpponentDAO(daoContext, getDeckDAO(), getFieldDAO(), getHandDAO());
 
         return opponentDAO;
     }
@@ -71,7 +69,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public DeckDAO getDeckDAO() {
         if (deckDAO == null)
-            deckDAO = new SharedPrefsDeckDAO(sharedPreferences, gson, getCardDAO());
+            deckDAO = new SharedPrefsDeckDAO(daoContext, getCardDAO());
 
         return deckDAO;
     }
@@ -79,7 +77,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public HandDAO getHandDAO() {
         if (handDAO == null)
-            handDAO = new SharedPrefsHandDAO(sharedPreferences, gson, getCardDAO());
+            handDAO = new SharedPrefsHandDAO(daoContext, getCardDAO());
 
         return handDAO;
     }
@@ -87,7 +85,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public FieldDAO getFieldDAO() {
         if (fieldDAO == null)
-            fieldDAO = new SharedPrefsFieldDAO(sharedPreferences, gson);
+            fieldDAO = new SharedPrefsFieldDAO(daoContext);
 
         return fieldDAO;
     }
@@ -95,7 +93,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public CardDAO getCardDAO() {
         if (cardDAO == null)
-            cardDAO = new SharedPrefsCardDAO(sharedPreferences, gson);
+            cardDAO = new SharedPrefsCardDAO(daoContext);
 
         return cardDAO;
     }

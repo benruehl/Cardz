@@ -10,9 +10,9 @@ import java.util.List;
 public class User extends Entity {
 
     private List<Long> collectedCardIds;
-    private Long currentMatchId;
-    private Long sharkDeckId;
-    private Long raptorDeckId;
+    private long currentMatchId;
+    private long sharkDeckId;
+    private long raptorDeckId;
 
     public User() {
         collectedCardIds = new ArrayList<>();

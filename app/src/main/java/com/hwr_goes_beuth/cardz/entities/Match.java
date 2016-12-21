@@ -5,8 +5,13 @@ package com.hwr_goes_beuth.cardz.entities;
  */
 public class Match extends Entity {
 
-    private Long matchUserId;
-    private Long opponentId;
+    private long matchUserId;
+    private long opponentId;
+
+    public Match() {
+        matchUserId = 0L;
+        opponentId = 0L;
+    }
 
     public Long getMatchUserId() {
         return matchUserId;
@@ -14,5 +19,13 @@ public class Match extends Entity {
 
     public Long getOpponentId() {
         return opponentId;
+    }
+
+    public void setMatchUserId(Long matchUserId) {
+        this.matchUserId = matchUserId;
+    }
+
+    public void setOpponentId(Long opponentId) {
+        this.opponentId = opponentId;
     }
 }

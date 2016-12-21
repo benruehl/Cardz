@@ -5,7 +5,31 @@ package com.hwr_goes_beuth.cardz.entities;
  */
 public class Player extends Entity {
 
-    private Long deckId;
-    private Long handId;
-    private Long fieldId;
+    private long deckId;
+    private long handId;
+    private long fieldId;
+
+    public Long getDeckId() {
+        return deckId;
+    }
+
+    public Long getHandId() {
+        return handId;
+    }
+
+    public Long getFieldId() {
+        return fieldId;
+    }
+
+    public void setDeckId(Long deckId) {
+        this.deckId = deckId;
+    }
+
+    public void setHandId(Long handId) {
+        this.handId = handId;
+    }
+
+    public void setFieldId(Long fieldId) {
+        this.fieldId = fieldId;
+    }
 }
