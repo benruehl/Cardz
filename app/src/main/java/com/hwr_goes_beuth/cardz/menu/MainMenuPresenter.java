@@ -1,6 +1,5 @@
 package com.hwr_goes_beuth.cardz.menu;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.hwr_goes_beuth.cardz.R;
@@ -11,7 +10,7 @@ import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
-import com.hwr_goes_beuth.cardz.game.GameActivity;
+import com.hwr_goes_beuth.cardz.match.MatchActivity;
 import com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity;
 
 import java.util.concurrent.Callable;
@@ -73,7 +72,7 @@ public class MainMenuPresenter extends ActivityPresenter {
     }
 
     private void resumeMatch(Context sourceView) {
-        mViewManager.switchView(sourceView, GameActivity.class);
+        mViewManager.switchView(sourceView, MatchActivity.class);
     }
 
     public void resetUserData(final Context sourceView) {

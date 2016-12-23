@@ -14,5 +14,9 @@ public interface FieldDAO {
     Field createField();
     void deleteField(long fieldId);
 
-    //List<Card> getCards(Field field);
+    Card getLeftCard(Field field);
+    Card getCenterLeftCard(Field field);
+    Card getCenterCard(Field field);
+    Card getCenterRightCard(Field field);
+    Card getRightCard(Field field);
 }

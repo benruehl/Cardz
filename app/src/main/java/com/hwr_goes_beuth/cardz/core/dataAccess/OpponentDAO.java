@@ -1,5 +1,6 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess;
 
+import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Opponent;
 
 /**
@@ -11,4 +12,6 @@ public interface OpponentDAO {
     Opponent createSharkOpponent();
     Opponent createRaptorOpponent();
     void deleteOpponent(long opponentId);
+
+    Deck getDeck(Opponent opponent);
 }

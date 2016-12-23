@@ -2,6 +2,7 @@ package com.hwr_goes_beuth.cardz.core.app;
 
 import com.hwr_goes_beuth.cardz.core.modules.AppModule;
 import com.hwr_goes_beuth.cardz.core.modules.DataModule;
+import com.hwr_goes_beuth.cardz.core.modules.GameModule;
 import com.hwr_goes_beuth.cardz.core.modules.ViewModule;
 
 /**
@@ -19,6 +20,7 @@ public class App extends android.app.Application {
                 .appModule(new AppModule(this))
                 .viewModule(new ViewModule())
                 .dataModule(new DataModule())
+                .gameModule(new GameModule())
                 .build();
     }
 

@@ -9,7 +9,7 @@ import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
-import com.hwr_goes_beuth.cardz.game.GameActivity;
+import com.hwr_goes_beuth.cardz.match.MatchActivity;
 
 import javax.inject.Inject;
 
@@ -33,7 +33,7 @@ public class GameSetupPresenter extends ActivityPresenter {
         currentUser.setCurrentMatchId(newMatch.getId());
         userDAO.updateUser(currentUser);
 
-        mViewManager.switchView(context, GameActivity.class);
+        mViewManager.switchView(context, MatchActivity.class);
     }
 
     @Override

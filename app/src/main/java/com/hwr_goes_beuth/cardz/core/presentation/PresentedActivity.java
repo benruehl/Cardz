@@ -30,6 +30,7 @@ public abstract class PresentedActivity<TPresenter extends ActivityPresenter> ex
             presenterCache.put(mPresenter);
 
         mPresenter.inject(((App) getApplication()).getAppComponent());
+        mPresenter.registerObserver(this);
     }
 
     protected abstract TPresenter createPresenter();

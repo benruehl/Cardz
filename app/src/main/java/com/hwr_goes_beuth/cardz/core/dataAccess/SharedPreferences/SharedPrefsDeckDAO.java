@@ -26,18 +26,6 @@ public class SharedPrefsDeckDAO implements DeckDAO {
     }
 
     @Override
-    public List<Card> getCards(Deck deck) {
-        List<Card> cards = new ArrayList<>();
-
-        for (long cardId : deck.getCardIds()) {
-            Card card = cardDAO.getCard(cardId);
-            cards.add(card);
-        }
-
-        return cards;
-    }
-
-    @Override
     public Deck getDeck(long id) {
         return context.loadFromPrefs(Deck.class, id);
     }
@@ -50,6 +38,11 @@ public class SharedPrefsDeckDAO implements DeckDAO {
     @Override
     public Deck createSharkDeck() {
         return createDeck(Faction.Shark);
+    }
+
+    @Override
+    public void updateDeck(Deck deck) {
+        context.saveToPrefs(deck);
     }
 
     private Deck createDeck(Faction faction) {
@@ -71,5 +64,26 @@ public class SharedPrefsDeckDAO implements DeckDAO {
         }
 
         context.deleteFromPrefs(deck);
+    }
+
+    @Override
+    public List<Card> getCards(Deck deck) {
+        List<Card> cards = new ArrayList<>();
+
+        for (long cardId : deck.getCardIds()) {
+            Card card = cardDAO.getCard(cardId);
+            cards.add(card);
+        }
+
+        return cards;
+    }
+
+    @Override
+    public Card createCardInDeck(Deck deck) {
+        Card newCard = cardDAO.createCard();
+        deck.getCardIds().add(newCard.getId());
+
+        updateDeck(deck);
+        return newCard;
     }
 }

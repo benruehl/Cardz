@@ -43,10 +43,37 @@ public class SharedPrefsFieldDAO implements FieldDAO {
     public void deleteField(long fieldId) {
         Field field = getField(fieldId);
 
-        //for (long cardId : field.getCardIds()) {
-        //    cardDAO.deleteCard(cardId);
-        //}
+        cardDAO.deleteCard(field.getCenterCardId());
+        cardDAO.deleteCard(field.getLeftCardId());
+        cardDAO.deleteCard(field.getRightCardId());
+        cardDAO.deleteCard(field.getCenterLeftCardId());
+        cardDAO.deleteCard(field.getCenterRightCardId());
 
         context.deleteFromPrefs(field);
+    }
+
+    @Override
+    public Card getLeftCard(Field field) {
+        return cardDAO.getCard(field.getLeftCardId());
+    }
+
+    @Override
+    public Card getCenterLeftCard(Field field) {
+        return cardDAO.getCard(field.getCenterLeftCardId());
+    }
+
+    @Override
+    public Card getCenterCard(Field field) {
+        return cardDAO.getCard(field.getCenterCardId());
+    }
+
+    @Override
+    public Card getCenterRightCard(Field field) {
+        return cardDAO.getCard(field.getCenterRightCardId());
+    }
+
+    @Override
+    public Card getRightCard(Field field) {
+        return cardDAO.getCard(field.getRightCardId());
     }
 }

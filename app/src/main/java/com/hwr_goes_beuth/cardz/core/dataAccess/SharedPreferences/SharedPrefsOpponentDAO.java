@@ -55,6 +55,11 @@ public class SharedPrefsOpponentDAO implements OpponentDAO {
         context.deleteFromPrefs(opponent);
     }
 
+    @Override
+    public Deck getDeck(Opponent opponent) {
+        return deckDAO.getDeck(opponent.getDeckId());
+    }
+
     private Opponent createOpponent(Deck deck) {
         Opponent newOpponent = new Opponent();
         newOpponent.setId(context.getNextId());
