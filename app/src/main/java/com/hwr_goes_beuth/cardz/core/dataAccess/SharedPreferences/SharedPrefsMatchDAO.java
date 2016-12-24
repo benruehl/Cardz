@@ -2,11 +2,9 @@ package com.hwr_goes_beuth.cardz.core.dataAccess.SharedPreferences;
 
 
 import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.MatchUserDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.OpponentDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
 import com.hwr_goes_beuth.cardz.entities.Match;
-import com.hwr_goes_beuth.cardz.entities.MatchUser;
-import com.hwr_goes_beuth.cardz.entities.Opponent;
+import com.hwr_goes_beuth.cardz.entities.Player;
 
 /**
  * Created by Project0rion on 19.12.2016.
@@ -14,13 +12,11 @@ import com.hwr_goes_beuth.cardz.entities.Opponent;
 public class SharedPrefsMatchDAO implements MatchDAO {
 
     private SharedPrefsDAOContext context;
-    private MatchUserDAO matchUserDAO;
-    private OpponentDAO opponentDAO;
+    private PlayerDAO playerDAO;
 
-    public SharedPrefsMatchDAO(SharedPrefsDAOContext context, MatchUserDAO matchUserDAO, OpponentDAO opponentDAO) {
+    public SharedPrefsMatchDAO(SharedPrefsDAOContext context, PlayerDAO playerDAO) {
         this.context = context;
-        this.matchUserDAO = matchUserDAO;
-        this.opponentDAO = opponentDAO;
+        this.playerDAO = playerDAO;
     }
 
     @Override
@@ -33,8 +29,8 @@ public class SharedPrefsMatchDAO implements MatchDAO {
         Match newMatch = new Match();
         newMatch.setId(context.getNextId());
 
-        MatchUser newMatchUser = matchUserDAO.createSharkMatchUser();
-        Opponent newOpponent = opponentDAO.createRaptorOpponent();
+        Player newMatchUser = playerDAO.createSharkPlayer();
+        Player newOpponent = playerDAO.createRaptorPlayer();
 
         newMatch.setMatchUserId(newMatchUser.getId());
         newMatch.setOpponentId(newOpponent.getId());
@@ -48,19 +44,19 @@ public class SharedPrefsMatchDAO implements MatchDAO {
     public void deleteMatch(long matchId) {
         Match match = getMatch(matchId);
 
-        matchUserDAO.deleteMatchUser(match.getMatchUserId());
-        opponentDAO.deleteOpponent(match.getOpponentId());
+        playerDAO.deletePlayer(match.getMatchUserId());
+        playerDAO.deletePlayer(match.getOpponentId());
 
         context.deleteFromPrefs(match);
     }
 
     @Override
-    public MatchUser getMatchUser(Match match) {
-        return matchUserDAO.getMatchUser(match.getMatchUserId());
+    public Player getMatchUser(Match match) {
+        return playerDAO.getPlayer(match.getMatchUserId());
     }
 
     @Override
-    public Opponent getOpponent(Match match) {
-        return opponentDAO.getOpponent(match.getOpponentId());
+    public Player getOpponent(Match match) {
+        return playerDAO.getPlayer(match.getOpponentId());
     }
 }

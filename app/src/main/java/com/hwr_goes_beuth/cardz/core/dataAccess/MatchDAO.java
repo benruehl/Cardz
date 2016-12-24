@@ -1,8 +1,7 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess;
 
 import com.hwr_goes_beuth.cardz.entities.Match;
-import com.hwr_goes_beuth.cardz.entities.MatchUser;
-import com.hwr_goes_beuth.cardz.entities.Opponent;
+import com.hwr_goes_beuth.cardz.entities.Player;
 
 /**
  * Created by Project0rion on 19.12.2016.
@@ -13,6 +12,6 @@ public interface MatchDAO {
     Match createMatch();
     void deleteMatch(long matchId);
 
-    MatchUser getMatchUser(Match match);
-    Opponent getOpponent(Match match);
+    Player getMatchUser(Match match);
+    Player getOpponent(Match match);
 }

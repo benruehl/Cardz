@@ -9,8 +9,7 @@ import com.hwr_goes_beuth.cardz.core.dataAccess.DeckDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.FieldDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.HandDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.MatchUserDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.OpponentDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
 
 /**
@@ -22,8 +21,7 @@ public class SharedPrefsDAOFactory extends DAOFactory {
 
     private UserDAO userDAO;
     private MatchDAO matchDAO;
-    private MatchUserDAO matchUserDAO;
-    private OpponentDAO opponentDAO;
+    private PlayerDAO playerDAO;
     private DeckDAO deckDAO;
     private HandDAO handDAO;
     private FieldDAO fieldDAO;
@@ -45,25 +43,17 @@ public class SharedPrefsDAOFactory extends DAOFactory {
     @Override
     public MatchDAO getMatchDAO() {
         if (matchDAO == null)
-            matchDAO = new SharedPrefsMatchDAO(daoContext, getMatchUserDAO(), getOpponentDAO());
+            matchDAO = new SharedPrefsMatchDAO(daoContext, getPlayerDAO());
 
         return matchDAO;
     }
 
     @Override
-    public MatchUserDAO getMatchUserDAO() {
-        if (matchUserDAO == null)
-            matchUserDAO = new SharedPrefsMatchUserDAO(daoContext, getDeckDAO(), getFieldDAO(), getHandDAO());
+    public PlayerDAO getPlayerDAO() {
+        if (playerDAO == null)
+            playerDAO = new SharedPrefsPlayerDAO(daoContext, getDeckDAO(), getFieldDAO(), getHandDAO());
 
-        return matchUserDAO;
-    }
-
-    @Override
-    public OpponentDAO getOpponentDAO() {
-        if (opponentDAO == null)
-            opponentDAO = new SharedPrefsOpponentDAO(daoContext, getDeckDAO(), getFieldDAO(), getHandDAO());
-
-        return opponentDAO;
+        return playerDAO;
     }
 
     @Override

@@ -31,6 +31,7 @@ public abstract class PresentedActivity<TPresenter extends ActivityPresenter> ex
 
         mPresenter.inject(((App) getApplication()).getAppComponent());
         mPresenter.registerObserver(this);
+        mPresenter.init();
     }
 
     protected abstract TPresenter createPresenter();

@@ -23,6 +23,10 @@ public class ActivityPresenter {
         }
     }
 
+    public void init() {
+
+    }
+
     public void inject(AppComponent appComponent) {
 
     }

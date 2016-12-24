@@ -8,8 +8,7 @@ public abstract class DAOFactory {
 
     public abstract UserDAO getUserDAO();
     public abstract MatchDAO getMatchDAO();
-    public abstract MatchUserDAO getMatchUserDAO();
-    public abstract OpponentDAO getOpponentDAO();
+    public abstract PlayerDAO getPlayerDAO();
     public abstract DeckDAO getDeckDAO();
     public abstract HandDAO getHandDAO();
     public abstract FieldDAO getFieldDAO();

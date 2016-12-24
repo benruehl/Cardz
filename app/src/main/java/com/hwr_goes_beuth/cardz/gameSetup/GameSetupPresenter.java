@@ -7,9 +7,16 @@ import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
+import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Match;
+import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.entities.enums.Faction;
+import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentCreator;
 import com.hwr_goes_beuth.cardz.match.MatchActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,14 +31,50 @@ public class GameSetupPresenter extends ActivityPresenter {
     @Inject
     DAOFactory mDAOFactory;
 
+    @Inject
+    OpponentCreator mOpponentCreator;
+
+    private Faction selectedFaction;
+    private Opponent selectedOpponent;
+
+    @Override
+    public void init() {
+        selectedFaction = Faction.Shark;
+        selectedOpponent = mOpponentCreator.getAvailableOpponents(selectedFaction).get(0);
+    }
+
+    public List<Opponent> getAvailableOpponents() {
+        return mOpponentCreator.getAvailableOpponents(selectedFaction);
+    }
+
+    public Opponent getSelectedOpponent() {
+        return selectedOpponent;
+    }
+
+    public void setSelectedOpponent(Opponent opponent) {
+        selectedOpponent = opponent;
+    }
+
     public void startMatch(Context context) {
 
         Match newMatch = mDAOFactory.getMatchDAO().createMatch();
 
-        UserDAO userDAO = mDAOFactory.getUserDAO();
-        User currentUser = userDAO.getOrCreateCurrentUser();
+        Player matchUser = mDAOFactory.getMatchDAO().getMatchUser(newMatch);
+        Deck matchUserDeck = mDAOFactory.getPlayerDAO().getDeck(matchUser);
+        matchUserDeck.setFaction(selectedFaction);
+        mDAOFactory.getDeckDAO().updateDeck(matchUserDeck);
+
+        Player opponentPlayer = mDAOFactory.getMatchDAO().getOpponent(newMatch);
+        opponentPlayer.setName(selectedOpponent.getName());
+        mDAOFactory.getPlayerDAO().updatePlayer(opponentPlayer);
+
+        Deck opponentDeck = mDAOFactory.getPlayerDAO().getDeck(opponentPlayer);
+        opponentDeck.setFaction(selectedOpponent.getFaction());
+        mDAOFactory.getDeckDAO().updateDeck(opponentDeck);
+
+        User currentUser = mDAOFactory.getUserDAO().getOrCreateCurrentUser();
         currentUser.setCurrentMatchId(newMatch.getId());
-        userDAO.updateUser(currentUser);
+        mDAOFactory.getUserDAO().updateUser(currentUser);
 
         mViewManager.switchView(context, MatchActivity.class);
     }

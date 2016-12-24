@@ -12,8 +12,6 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getPresenter().initMatch();
     }
 
     @Override

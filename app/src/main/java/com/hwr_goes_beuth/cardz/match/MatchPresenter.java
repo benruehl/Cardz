@@ -1,5 +1,6 @@
 package com.hwr_goes_beuth.cardz.match;
 
+import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
 import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
@@ -7,8 +8,9 @@ import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.entities.Card;
 import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Match;
-import com.hwr_goes_beuth.cardz.entities.Opponent;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentCreator;
 
 import javax.inject.Inject;
 
@@ -21,26 +23,18 @@ public class MatchPresenter extends ActivityPresenter {
     DAOFactory mDAOFactory;
 
     @Inject
+    OpponentCreator mOpponentCreator;
+
+    @Inject
     CardRepository mCardRepository;
 
-    public void initMatch() {
-        /*
-        Card kingCard = mCardRepository.getKnownCards().get(0);
-
+    @Override
+    public void init() {
         User currentUser = mDAOFactory.getUserDAO().getOrCreateCurrentUser();
         Match currentMatch = mDAOFactory.getUserDAO().getCurrentMatch(currentUser);
-        Opponent matchOpponent = mDAOFactory.getMatchDAO().getOpponent(currentMatch);
-        Deck opponentDeck = mDAOFactory.getOpponentDAO().getDeck(matchOpponent);
+        Player opponentPlayer = mDAOFactory.getMatchDAO().getOpponent(currentMatch);
 
-        Card opponentCard = mDAOFactory.getDeckDAO().createCardInDeck(opponentDeck);
-        opponentCard.setName(kingCard.getName());
-        opponentCard.setFaction(kingCard.getFaction());
-        opponentCard.setDamage(kingCard.getDamage());
-        opponentCard.setHealth(kingCard.getHealth());
-        opponentCard.setCost(kingCard.getCost());
-
-        mDAOFactory.getCardDAO().updateCard(opponentCard);
-        */
+        Opponent opponent = mOpponentCreator.getOpponentForOpponentPlayer(opponentPlayer);
     }
 
     @Override

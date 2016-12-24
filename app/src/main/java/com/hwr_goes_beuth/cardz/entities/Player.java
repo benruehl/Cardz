@@ -5,9 +5,14 @@ package com.hwr_goes_beuth.cardz.entities;
  */
 public class Player extends Entity {
 
+    private String name;
     private long deckId;
     private long handId;
     private long fieldId;
+
+    public String getName() {
+        return name;
+    }
 
     public long getDeckId() {
         return deckId;
@@ -19,6 +24,10 @@ public class Player extends Entity {
 
     public long getFieldId() {
         return fieldId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setDeckId(long deckId) {
