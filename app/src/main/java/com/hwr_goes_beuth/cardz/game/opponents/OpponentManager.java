@@ -3,6 +3,7 @@ package com.hwr_goes_beuth.cardz.game.opponents;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.enums.Faction;
+import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
 import com.hwr_goes_beuth.cardz.game.opponents.behaviors.*;
 
 import java.util.ArrayList;
@@ -14,20 +15,16 @@ import javax.inject.Inject;
 /**
  * Created by Project0rion on 23.12.2016.
  */
-public class OpponentCreator {
+public class OpponentManager {
 
     private DAOFactory daoFactory;
     private List<Opponent> knownOpponents;
+    private DeckRepository deckRepository;
 
-    public OpponentCreator(DAOFactory daoFactory) {
+    public OpponentManager(DAOFactory daoFactory, DeckRepository deckRepository, OpponentRepository opponentRepository) {
         this.daoFactory = daoFactory;
-        knownOpponents = new ArrayList<>();
-
-        knownOpponents.add(new Opponent("Sharky McSharkface", Faction.Shark, new PassiveOpponentBehavior()));
-        knownOpponents.add(new Opponent("Sharkinator", Faction.Shark, new AggressiveOpponentBehavior()));
-
-        knownOpponents.add(new Opponent("Raptorion", Faction.Raptor, new AggressiveOpponentBehavior()));
-        knownOpponents.add(new Opponent("Toothloosy", Faction.Raptor, new PassiveOpponentBehavior()));
+        this.deckRepository = deckRepository;
+        knownOpponents = opponentRepository.getKnownOpponents();
     }
 
     public List<Opponent> getAvailableOpponents(Faction matchPlayerFaction) {
@@ -41,7 +38,7 @@ public class OpponentCreator {
         return availableOpponents;
     }
 
-    public Opponent getOpponentForOpponentPlayer(Player opponentPlayer) {
+    public Opponent getOpponent(Player opponentPlayer) {
         for (Opponent opponent : knownOpponents) {
             if (opponent.getFaction() == daoFactory.getPlayerDAO().getDeck(opponentPlayer).getFaction()
                     && opponent.getName().equals(opponentPlayer.getName()))
@@ -49,5 +46,9 @@ public class OpponentCreator {
         }
 
         throw new NoSuchElementException("there is no opponent known which matches the name and faction of the player");
+    }
+
+    public void createOpponentDeck(Player opponentPlayer) {
+        deckRepository.createOpponentDeck(opponentPlayer);
     }
 }

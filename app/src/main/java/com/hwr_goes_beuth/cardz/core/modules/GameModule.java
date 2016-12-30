@@ -2,7 +2,9 @@ package com.hwr_goes_beuth.cardz.core.modules;
 
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
-import com.hwr_goes_beuth.cardz.game.opponents.OpponentCreator;
+import com.hwr_goes_beuth.cardz.game.opponents.DeckRepository;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentRepository;
 
 import javax.inject.Singleton;
 
@@ -23,7 +25,19 @@ public class GameModule {
 
     @Provides
     @Singleton
-    OpponentCreator providesOpponentCreator(DAOFactory daoFactory) {
-        return new OpponentCreator(daoFactory);
+    DeckRepository providesDeckRepository(DAOFactory daoFactory, CardRepository cardRepository) {
+        return new DeckRepository(daoFactory, cardRepository);
+    }
+
+    @Provides
+    @Singleton
+    OpponentRepository providesOpponentRepository() {
+        return new OpponentRepository();
+    }
+
+    @Provides
+    @Singleton
+    OpponentManager providesOpponentManager(DAOFactory daoFactory, DeckRepository deckRepository, OpponentRepository opponentRepository) {
+        return new OpponentManager(daoFactory, deckRepository, opponentRepository);
     }
 }

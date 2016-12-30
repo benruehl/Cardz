@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
-import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.entities.Deck;
@@ -13,7 +12,7 @@ import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
 import com.hwr_goes_beuth.cardz.entities.enums.Faction;
 import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
-import com.hwr_goes_beuth.cardz.game.opponents.OpponentCreator;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.match.MatchActivity;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class GameSetupPresenter extends ActivityPresenter {
     DAOFactory mDAOFactory;
 
     @Inject
-    OpponentCreator mOpponentCreator;
+    OpponentManager mOpponentManager;
 
     private Faction selectedFaction;
     private Opponent selectedOpponent;
@@ -40,11 +39,11 @@ public class GameSetupPresenter extends ActivityPresenter {
     @Override
     public void init() {
         selectedFaction = Faction.Shark;
-        selectedOpponent = mOpponentCreator.getAvailableOpponents(selectedFaction).get(0);
+        selectedOpponent = mOpponentManager.getAvailableOpponents(selectedFaction).get(0);
     }
 
     public List<Opponent> getAvailableOpponents() {
-        return mOpponentCreator.getAvailableOpponents(selectedFaction);
+        return mOpponentManager.getAvailableOpponents(selectedFaction);
     }
 
     public Opponent getSelectedOpponent() {
@@ -71,6 +70,8 @@ public class GameSetupPresenter extends ActivityPresenter {
         Deck opponentDeck = mDAOFactory.getPlayerDAO().getDeck(opponentPlayer);
         opponentDeck.setFaction(selectedOpponent.getFaction());
         mDAOFactory.getDeckDAO().updateDeck(opponentDeck);
+
+        mOpponentManager.createOpponentDeck(opponentPlayer);
 
         User currentUser = mDAOFactory.getUserDAO().getOrCreateCurrentUser();
         currentUser.setCurrentMatchId(newMatch.getId());

@@ -5,12 +5,10 @@ import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
 import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
-import com.hwr_goes_beuth.cardz.entities.Card;
-import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
 import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
-import com.hwr_goes_beuth.cardz.game.opponents.OpponentCreator;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 
 import javax.inject.Inject;
 
@@ -23,7 +21,7 @@ public class MatchPresenter extends ActivityPresenter {
     DAOFactory mDAOFactory;
 
     @Inject
-    OpponentCreator mOpponentCreator;
+    OpponentManager mOpponentManager;
 
     @Inject
     CardRepository mCardRepository;
@@ -34,7 +32,7 @@ public class MatchPresenter extends ActivityPresenter {
         Match currentMatch = mDAOFactory.getUserDAO().getCurrentMatch(currentUser);
         Player opponentPlayer = mDAOFactory.getMatchDAO().getOpponent(currentMatch);
 
-        Opponent opponent = mOpponentCreator.getOpponentForOpponentPlayer(opponentPlayer);
+        Opponent opponent = mOpponentManager.getOpponent(opponentPlayer);
     }
 
     @Override
