@@ -3,14 +3,11 @@ package com.hwr_goes_beuth.cardz.game.opponents;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.enums.Faction;
-import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
-import com.hwr_goes_beuth.cardz.game.opponents.behaviors.*;
+import com.hwr_goes_beuth.cardz.game.cards.DeckRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
-import javax.inject.Inject;
 
 /**
  * Created by Project0rion on 23.12.2016.

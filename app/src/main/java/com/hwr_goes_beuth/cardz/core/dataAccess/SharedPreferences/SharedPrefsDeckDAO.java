@@ -81,9 +81,12 @@ public class SharedPrefsDeckDAO implements DeckDAO {
     @Override
     public Card createCardInDeck(Deck deck) {
         Card newCard = cardDAO.createCard();
-        deck.getCardIds().add(newCard.getId());
+        newCard.setFaction(deck.getFaction());
+        cardDAO.updateCard(newCard);
 
+        deck.getCardIds().add(newCard.getId());
         updateDeck(deck);
+
         return newCard;
     }
 }

@@ -6,6 +6,7 @@ import com.hwr_goes_beuth.cardz.core.app.AppComponent;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
+import com.hwr_goes_beuth.cardz.entities.Card;
 import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
@@ -15,6 +16,7 @@ import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
 import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.match.MatchActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -63,6 +65,8 @@ public class GameSetupPresenter extends ActivityPresenter {
         matchUserDeck.setFaction(selectedFaction);
         mDAOFactory.getDeckDAO().updateDeck(matchUserDeck);
 
+        selectUserDeckForMatch(matchUserDeck);
+
         Player opponentPlayer = mDAOFactory.getMatchDAO().getOpponent(newMatch);
         opponentPlayer.setName(selectedOpponent.getName());
         mDAOFactory.getPlayerDAO().updatePlayer(opponentPlayer);
@@ -78,6 +82,32 @@ public class GameSetupPresenter extends ActivityPresenter {
         mDAOFactory.getUserDAO().updateUser(currentUser);
 
         mViewManager.switchView(context, MatchActivity.class);
+    }
+
+    private void selectUserDeckForMatch(Deck targetMatchUserDeck) {
+        User user = mDAOFactory.getUserDAO().getOrCreateCurrentUser();
+
+        List<Deck> allUserDecks = new ArrayList<>();
+        allUserDecks.add(mDAOFactory.getUserDAO().getSharkDeck(user));
+        allUserDecks.add(mDAOFactory.getUserDAO().getRaptorDeck(user));
+
+        Deck sourceDeck = null;
+        for (Deck userDeck : allUserDecks) {
+            if (userDeck.getFaction() == selectedFaction)
+                sourceDeck = userDeck;
+        }
+
+        if (sourceDeck == null)
+            throw new IllegalStateException("user has no deck of selected faction " + selectedFaction);
+
+        for (Card sourceCard : mDAOFactory.getDeckDAO().getCards(sourceDeck)) {
+            Card targetCard = mDAOFactory.getDeckDAO().createCardInDeck(targetMatchUserDeck);
+            targetCard.setName(sourceCard.getName());
+            targetCard.setDamage(sourceCard.getDamage());
+            targetCard.setHealth(sourceCard.getHealth());
+            targetCard.setCost(sourceCard.getCost());
+            mDAOFactory.getCardDAO().updateCard(targetCard);
+        }
     }
 
     @Override

@@ -80,4 +80,14 @@ public class SharedPrefsPlayerDAO implements PlayerDAO {
     public Deck getDeck(Player player) {
         return deckDAO.getDeck(player.getDeckId());
     }
+
+    @Override
+    public Hand getHand(Player player) {
+        return handDAO.getHand(player.getHandId());
+    }
+
+    @Override
+    public Field getField(Player player) {
+        return fieldDAO.getField(player.getFieldId());
+    }
 }

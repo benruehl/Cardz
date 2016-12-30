@@ -10,6 +10,7 @@ import com.hwr_goes_beuth.cardz.core.presentation.ViewManager;
 import com.hwr_goes_beuth.cardz.core.presentation.ActivityPresenter;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.game.cards.DeckRepository;
 import com.hwr_goes_beuth.cardz.match.MatchActivity;
 import com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity;
 
@@ -27,6 +28,19 @@ public class MainMenuPresenter extends ActivityPresenter {
 
     @Inject
     DAOFactory mDAOFactory;
+
+    @Inject
+    DeckRepository mDeckRepository;
+
+    @Override
+    public void init() {
+        User recentUser = mDAOFactory.getUserDAO().getOrCreateCurrentUser();
+
+        if (mDAOFactory.getUserDAO().getRaptorDeck(recentUser).getCardIds().isEmpty())
+            mDeckRepository.createInitialRaptorDeck(recentUser);
+        if (mDAOFactory.getUserDAO().getSharkDeck(recentUser).getCardIds().isEmpty())
+            mDeckRepository.createInitialSharkDeck(recentUser);
+    }
 
     public void startGame(final Context sourceView) {
         UserDAO userDAO = mDAOFactory.getUserDAO();

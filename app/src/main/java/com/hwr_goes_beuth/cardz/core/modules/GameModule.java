@@ -2,7 +2,7 @@ package com.hwr_goes_beuth.cardz.core.modules;
 
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
-import com.hwr_goes_beuth.cardz.game.opponents.DeckRepository;
+import com.hwr_goes_beuth.cardz.game.cards.DeckRepository;
 import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.game.opponents.OpponentRepository;
 

@@ -1,6 +1,8 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess;
 
 import com.hwr_goes_beuth.cardz.entities.Deck;
+import com.hwr_goes_beuth.cardz.entities.Field;
+import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Player;
 
 /**
@@ -15,4 +17,6 @@ public interface PlayerDAO {
     void deletePlayer(long playerId);
 
     Deck getDeck(Player player);
+    Hand getHand(Player player);
+    Field getField(Player player);
 }
