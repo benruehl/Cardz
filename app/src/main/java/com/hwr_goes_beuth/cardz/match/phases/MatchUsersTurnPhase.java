@@ -33,4 +33,9 @@ public class MatchUsersTurnPhase extends MatchPhase {
     public MatchPhase getNextPhase() {
         return null;
     }
+
+    @Override
+    public com.hwr_goes_beuth.cardz.entities.enums.MatchPhase getMappedPhase() {
+        return com.hwr_goes_beuth.cardz.entities.enums.MatchPhase.MatchUsersTurn;
+    }
 }

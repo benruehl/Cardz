@@ -10,6 +10,7 @@ public interface MatchDAO {
 
     Match getMatch(long id);
     Match createMatch();
+    void updateMatch(Match match);
     void deleteMatch(long matchId);
 
     Player getMatchUser(Match match);

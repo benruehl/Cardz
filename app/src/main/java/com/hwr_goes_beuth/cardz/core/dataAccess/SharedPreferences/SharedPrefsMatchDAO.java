@@ -5,6 +5,7 @@ import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
 import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
+import com.hwr_goes_beuth.cardz.entities.enums.MatchPhase;
 
 /**
  * Created by Project0rion on 19.12.2016.
@@ -28,6 +29,7 @@ public class SharedPrefsMatchDAO implements MatchDAO {
     public Match createMatch() {
         Match newMatch = new Match();
         newMatch.setId(context.getNextId());
+        newMatch.setMatchPhase(MatchPhase.Initial);
 
         Player newMatchUser = playerDAO.createSharkPlayer();
         Player newOpponent = playerDAO.createRaptorPlayer();
@@ -38,6 +40,11 @@ public class SharedPrefsMatchDAO implements MatchDAO {
         context.saveToPrefs(newMatch);
 
         return newMatch;
+    }
+
+    @Override
+    public void updateMatch(Match match) {
+        context.saveToPrefs(match);
     }
 
     @Override
