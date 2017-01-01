@@ -38,6 +38,11 @@ public class SharedPrefsHandDAO implements HandDAO {
     }
 
     @Override
+    public void updateHand(Hand playerHand) {
+        context.saveToPrefs(playerHand);
+    }
+
+    @Override
     public void deleteHand(long handId) {
         Hand hand = getHand(handId);
 

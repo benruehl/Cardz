@@ -108,7 +108,10 @@ public class MainMenuPresenter extends ActivityPresenter {
 
     private void resetUserData() {
         mDAOFactory.getUserDAO().deleteCurrentUser();
-        mDAOFactory.getUserDAO().getOrCreateCurrentUser();
+        User newUser = mDAOFactory.getUserDAO().getOrCreateCurrentUser();
+
+        mDeckRepository.createInitialRaptorDeck(newUser);
+        mDeckRepository.createInitialSharkDeck(newUser);
     }
 
     @Override

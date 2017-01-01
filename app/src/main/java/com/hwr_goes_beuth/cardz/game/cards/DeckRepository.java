@@ -38,7 +38,7 @@ public class DeckRepository {
     }
 
     public void createInitialRaptorDeck(User user) {
-        Deck raptorDeck = daoFactory.getUserDAO().getSharkDeck(user);
+        Deck raptorDeck = daoFactory.getUserDAO().getRaptorDeck(user);
 
         addCardToDeck(raptorDeck, "Evil Raptor King");
         addCardToDeck(raptorDeck, "Mecha Mage");

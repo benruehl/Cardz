@@ -16,4 +16,13 @@
 
     <!-- Game Setup -->
     <string name="start_match_button">Start match</string>
+
+    <!-- Match -->
+    <string name="match_phase_title_initial">setting up...</string>
+    <string name="match_phase_title_matchUsersTurn">your turn</string>
+    <string name="match_phase_title_opponentsTurn">opponents turn</string>
+    <string name="match_phase_title_end">match finished</string>
+
+    <string name="run_phase_button">-></string>
+
 </resources>
