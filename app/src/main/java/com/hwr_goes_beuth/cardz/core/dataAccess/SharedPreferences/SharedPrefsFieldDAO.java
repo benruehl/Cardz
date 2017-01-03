@@ -40,6 +40,11 @@ public class SharedPrefsFieldDAO implements FieldDAO {
     }
 
     @Override
+    public void updateField(Field field) {
+        context.saveToPrefs(field);
+    }
+
+    @Override
     public void deleteField(long fieldId) {
         Field field = getField(fieldId);
 

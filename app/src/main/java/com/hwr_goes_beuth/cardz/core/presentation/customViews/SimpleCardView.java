@@ -1,6 +1,7 @@
 package com.hwr_goes_beuth.cardz.core.presentation.customViews;
 
 import android.content.Context;
+import android.transition.Visibility;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +46,10 @@ public class SimpleCardView extends RelativeLayout {
             return;
         }
 
-        damageTextView.setText(cardToDisplay.getDamage());
-        healthTextView.setText(cardToDisplay.getHealth());
+        setDataVisibility(VISIBLE);
+
+        damageTextView.setText(Integer.toString(cardToDisplay.getDamage()));
+        healthTextView.setText(Integer.toString(cardToDisplay.getHealth()));
 
         switch (cardToDisplay.getFaction()) {
             case Raptor:
@@ -60,6 +63,10 @@ public class SimpleCardView extends RelativeLayout {
 
     public void clear() {
         setBackground(getResources().getDrawable(R.drawable.card_background_empty));
-        ((ViewGroup)rootView).getChildAt(0).setVisibility(INVISIBLE);
+        setDataVisibility(INVISIBLE);
+    }
+
+    private void setDataVisibility(int visibility) {
+        ((ViewGroup)rootView).getChildAt(0).setVisibility(visibility);
     }
 }

@@ -20,7 +20,8 @@
             android:id="@+id/card_damage_text"
             android:layout_width="@dimen/card_indicator_size"
             android:layout_height="@dimen/card_indicator_size"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
+            android:includeFontPadding="false"
             android:textSize="@dimen/card_indicator_size"
             android:text="3"/>
 
@@ -33,7 +34,8 @@
             android:id="@+id/card_health_text"
             android:layout_width="@dimen/card_indicator_size"
             android:layout_height="@dimen/card_indicator_size"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
+            android:includeFontPadding="false"
             android:textSize="@dimen/card_indicator_size"
             android:text="5"/>
 

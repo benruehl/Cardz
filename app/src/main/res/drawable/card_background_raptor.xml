@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/card_corner_radius"/>
-            <solid android:color="#f0f0f0"/>
+            <solid android:color="@color/colorRaptorLight"/>
             <stroke android:color="@color/colorRaptor" android:width="@dimen/card_stroke_thickness"/>
         </shape>
     </item>

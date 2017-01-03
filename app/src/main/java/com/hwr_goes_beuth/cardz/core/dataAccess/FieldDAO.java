@@ -12,6 +12,7 @@ public interface FieldDAO {
 
     Field getField(long id);
     Field createField();
+    void updateField(Field field);
     void deleteField(long fieldId);
 
     Card getLeftCard(Field field);

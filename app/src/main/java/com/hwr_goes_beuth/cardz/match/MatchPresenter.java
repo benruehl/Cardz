@@ -2,6 +2,7 @@ package com.hwr_goes_beuth.cardz.match;
 
 import com.hwr_goes_beuth.cardz.entities.Card;
 import com.hwr_goes_beuth.cardz.entities.Deck;
+import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.game.cards.CardRepository;
@@ -80,9 +81,21 @@ public class MatchPresenter extends ActivityPresenter {
         return mDAOFactory.getHandDAO().getCards(matchUserHand);
     }
 
+    public Field getMatchUserField() {
+        return mDAOFactory.getPlayerDAO().getField(getCurrentMatchUser());
+    }
+
+    public Field getOpponentField() {
+        return mDAOFactory.getPlayerDAO().getField(getCurrentMatchOpponent());
+    }
+
     public int getMatchUserDeckCount() {
         Deck matchUserDeck = mDAOFactory.getPlayerDAO().getDeck(getCurrentMatchUser());
         return matchUserDeck.getCardIds().size();
+    }
+
+    public Card getCardById(long cardId) {
+        return mDAOFactory.getCardDAO().getCard(cardId);
     }
 
     private Player getCurrentMatchUser() {
