@@ -8,7 +8,7 @@
                     <stroke android:color="#ffffff" android:width="4dp"/>
                 </shape>
             </item>
-            <item android:drawable="@drawable/arrow_right" />
+            <item android:drawable="@drawable/icon_arrow_right" />
         </layer-list>
     </item>
     <item android:state_pressed="true">

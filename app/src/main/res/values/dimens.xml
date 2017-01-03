@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="match_card_width">60dp</dimen>
     <dimen name="match_card_height">100dp</dimen>
+    <dimen name="card_indicator_size">16dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
+    <dimen name="card_stroke_thickness">2dp</dimen>
 </resources>

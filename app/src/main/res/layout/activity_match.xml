@@ -24,10 +24,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -35,10 +34,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -46,10 +44,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -57,10 +54,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -68,10 +64,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>
@@ -112,10 +107,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -123,10 +117,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -134,10 +127,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -145,10 +137,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
@@ -156,10 +147,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <ImageView
+            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
                 android:layout_width="@dimen/match_card_width"
                 android:layout_height="@dimen/match_card_height"
-                android:background="@drawable/empty_card_slot"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>
