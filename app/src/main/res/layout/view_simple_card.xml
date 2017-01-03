@@ -13,8 +13,8 @@
         <ImageView
             android:layout_width="@dimen/card_indicator_size"
             android:layout_height="@dimen/card_indicator_size"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/icon_sword"/>
+            android:background="@drawable/icon_sword"
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/card_damage_text"
@@ -28,7 +28,8 @@
         <ImageView
             android:layout_width="@dimen/card_indicator_size"
             android:layout_height="@dimen/card_indicator_size"
-            android:background="@drawable/icon_heart"/>
+            android:background="@drawable/icon_heart"
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:id="@+id/card_health_text"
@@ -38,6 +39,20 @@
             android:includeFontPadding="false"
             android:textSize="@dimen/card_indicator_size"
             android:text="5"/>
+
+        <!--<ImageView
+            android:layout_width="@dimen/card_indicator_size"
+            android:layout_height="@dimen/card_indicator_size"
+            android:background="@drawable/icon_coins"/>
+
+        <TextView
+            android:id="@+id/card_cost_text"
+            android:layout_width="@dimen/card_indicator_size"
+            android:layout_height="@dimen/card_indicator_size"
+            android:textAlignment="textEnd"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/card_indicator_size"
+            android:text="4"/>-->
 
     </GridLayout>
 
