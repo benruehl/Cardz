@@ -165,14 +165,25 @@
     </LinearLayout>
 
     <GridLayout
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:columnCount="2"
+        android:padding="6dp">
 
-        <Button
-            android:id="@+id/match_user_deck_button"
-            android:layout_width="60dp"
-            android:layout_height="100dp"
-            android:layout_margin="6dp"
-            android:layout_gravity="right"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/match_user_hand"
+            android:layout_gravity="fill_horizontal"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:scrollbars="horizontal"/>
+
+        <RelativeLayout
+            android:layout_column="1">
+            <Button
+                android:id="@+id/match_user_deck_button"
+                android:layout_width="60dp"
+                android:layout_height="100dp"/>
+        </RelativeLayout>
     </GridLayout>
 
 </GridLayout>

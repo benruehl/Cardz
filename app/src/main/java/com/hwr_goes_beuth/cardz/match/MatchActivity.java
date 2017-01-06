@@ -1,15 +1,18 @@
 package com.hwr_goes_beuth.cardz.match;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.hwr_goes_beuth.cardz.R;
 import com.hwr_goes_beuth.cardz.core.presentation.PresentedActivity;
 import com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView;
 import com.hwr_goes_beuth.cardz.entities.Field;
+import com.hwr_goes_beuth.cardz.match.handView.HandViewAdapter;
+import com.hwr_goes_beuth.cardz.match.handView.MarginItemDecoration;
 
 /**
  * Created by Project0rion on 11.12.2016.
@@ -68,5 +71,13 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
         ((SimpleCardView)findViewById(R.id.match_user_field_center)).setCard(getPresenter().getCardById(matchUserField.getCenterCardId()));
         ((SimpleCardView)findViewById(R.id.match_user_field_center_right)).setCard(getPresenter().getCardById(matchUserField.getCenterRightCardId()));
         ((SimpleCardView)findViewById(R.id.match_user_field_right)).setCard(getPresenter().getCardById(matchUserField.getRightCardId()));
+
+        RecyclerView handView = (RecyclerView) findViewById(R.id.match_user_hand);
+        handView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        handView.setLayoutManager(layoutManager);
+        handView.addItemDecoration(new MarginItemDecoration(this, R.dimen.match_card_margin));
+        RecyclerView.Adapter adapter = new HandViewAdapter(getPresenter().getMatchUserHand());
+        handView.setAdapter(adapter);
     }
 }
