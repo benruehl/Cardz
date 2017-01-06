@@ -1,189 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.hwr_goes_beuth.cardz.match.MatchActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent">
-
-        <Button
-            android:layout_width="@dimen/match_card_width"
-            android:layout_height="@dimen/match_card_height"
-            android:layout_margin="6dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_width="match_parent">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_opponent_field_left"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_opponent_field_center_left"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_opponent_field_center"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_opponent_field_center_right"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_opponent_field_right"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <RelativeLayout android:layout_gravity="center_vertical">
-        <Button
-            android:id="@+id/run_phase_button"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="-10dp"
-            android:background="@drawable/play_button"
-            android:text="@string/run_phase_button"
-            android:textColor="#ffffff"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@color/colorPrimary">
-
-            <TextView
-                android:id="@+id/match_phase_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:textColor="#ffffff"
-                android:textAlignment="center"/>
-        </FrameLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_width="match_parent">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_user_field_left"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_user_field_center_left"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_user_field_center"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_user_field_center_right"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-            <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
-                android:id="@+id/match_user_field_right"
-                android:layout_width="@dimen/match_card_width"
-                android:layout_height="@dimen/match_card_height"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/match_background"/>
 
     <GridLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:columnCount="2"
-        android:padding="6dp">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/match_user_hand"
-            android:layout_gravity="fill_horizontal"
-            android:layout_height="match_parent"
-            android:layout_column="0"
-            android:scrollbars="horizontal"/>
+        <RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/match_opponent_hand_layout"
+                android:layout_alignRight="@+id/match_opponent_hand_layout"
+                android:layout_alignTop="@+id/match_opponent_hand_layout"
+                android:layout_alignBottom="@+id/match_opponent_hand_layout"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/match_background_hand"
+                android:layout_marginTop="-25dp"/>
+
+            <LinearLayout
+                android:id="@+id/match_opponent_hand_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="25dp">
+
+                <Button
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_margin="6dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_opponent_field_left"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_opponent_field_center_left"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_opponent_field_center"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_opponent_field_center_right"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_opponent_field_right"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </LinearLayout>
 
         <RelativeLayout
-            android:layout_column="1">
-            <Button
-                android:id="@+id/match_user_deck_button"
-                android:layout_width="60dp"
-                android:layout_height="100dp"/>
-        </RelativeLayout>
-    </GridLayout>
+            android:layout_gravity="center_vertical">
 
-</GridLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/match_center_layout"
+                android:layout_alignRight="@+id/match_center_layout"
+                android:layout_alignTop="@+id/match_center_layout"
+                android:layout_alignBottom="@+id/match_center_layout"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/match_background_center"/>
+
+            <RelativeLayout
+                android:id="@+id/match_center_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+                <Button
+                    android:id="@+id/run_phase_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/play_button"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="-8dp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/match_phase_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:textColor="#ffffff"
+                        android:textAlignment="center"/>
+                </FrameLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_user_field_left"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_user_field_center_left"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_user_field_center"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_user_field_center_right"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.hwr_goes_beuth.cardz.core.presentation.customViews.SimpleCardView
+                    android:id="@+id/match_user_field_right"
+                    android:layout_width="@dimen/match_card_width"
+                    android:layout_height="@dimen/match_card_height"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/match_user_hand_layout"
+                android:layout_alignRight="@+id/match_user_hand_layout"
+                android:layout_alignTop="@+id/match_user_hand_layout"
+                android:layout_alignBottom="@+id/match_user_hand_layout"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/match_background_hand"
+                android:layout_marginBottom="-25dp"/>
+
+            <GridLayout
+                android:id="@+id/match_user_hand_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:columnCount="2"
+                android:paddingTop="25dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/match_user_hand"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:scrollbars="horizontal"
+                    android:layout_margin="6dp"/>
+
+                <RelativeLayout
+                    android:layout_column="1"
+                    android:layout_margin="6dp">
+                    <Button
+                        android:id="@+id/match_user_deck_button"
+                        android:layout_width="60dp"
+                        android:layout_height="100dp"/>
+                </RelativeLayout>
+            </GridLayout>
+        </RelativeLayout>
+
+    </GridLayout>
+</RelativeLayout>

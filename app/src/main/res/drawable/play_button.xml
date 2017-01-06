@@ -4,17 +4,11 @@
         <layer-list>
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="@color/colorPrimary"/>
-                    <stroke android:color="#ffffff" android:width="4dp"/>
+                    <solid android:color="#20ffffff"/>
+                    <stroke android:color="#80ffffff" android:width="2dp"/>
                 </shape>
             </item>
             <item android:drawable="@drawable/icon_arrow_right" />
         </layer-list>
-    </item>
-    <item android:state_pressed="true">
-        <shape android:shape="oval">
-            <solid android:color="@color/colorPrimaryDark"/>
-            <stroke android:color="#ffffff" android:width="4dp"/>
-        </shape>
     </item>
 </selector>
