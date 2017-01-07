@@ -9,6 +9,7 @@ import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.match.MatchHelper;
 import com.hwr_goes_beuth.cardz.match.MatchPhase;
 
@@ -22,8 +23,8 @@ public class InitialPhase extends MatchPhase {
     private static final int CARDS_TO_DRAW = 4;
     private boolean completed;
 
-    public InitialPhase(DAOFactory daoFactory) {
-        super(daoFactory);
+    public InitialPhase(DAOFactory daoFactory, OpponentManager opponentManager) {
+        super(daoFactory, opponentManager);
         completed = false;
     }
 
@@ -63,7 +64,7 @@ public class InitialPhase extends MatchPhase {
 
     @Override
     public MatchPhase getNextPhase() {
-        return new MatchUsersTurnPhase(getDaoFactory());
+        return new MatchUsersTurnPhase(getDaoFactory(), getOpponentManager());
     }
 
     @Override

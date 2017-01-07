@@ -10,6 +10,7 @@ import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.match.MatchHelper;
 import com.hwr_goes_beuth.cardz.match.MatchPhase;
 
@@ -20,8 +21,8 @@ public class MatchUsersTurnPhase extends MatchPhase {
 
     private boolean drewCard;
 
-    public MatchUsersTurnPhase(DAOFactory daoFactory) {
-        super(daoFactory);
+    public MatchUsersTurnPhase(DAOFactory daoFactory, OpponentManager opponentManager) {
+        super(daoFactory, opponentManager);
         drewCard = false;
     }
 
@@ -39,19 +40,6 @@ public class MatchUsersTurnPhase extends MatchPhase {
 
         MatchHelper.letPlayerDrawCards(getDaoFactory(), matchUser, 1);
         drewCard = true;
-
-        makeMatchUserPlayCard(matchUser);
-    }
-
-    private void makeMatchUserPlayCard(Player matchUser) {
-        Hand matchUserHand = getDaoFactory().getPlayerDAO().getHand(matchUser);
-        Field matchUserField = getDaoFactory().getPlayerDAO().getField(matchUser);
-
-        long cardId = matchUserHand.getCardIds().get(0);
-        matchUserField.setCenterLeftCardId(cardId);
-        matchUserHand.getCardIds().remove(cardId);
-        getDaoFactory().getFieldDAO().updateField(matchUserField);
-        getDaoFactory().getHandDAO().updateHand(matchUserHand);
     }
 
     @Override
@@ -61,7 +49,7 @@ public class MatchUsersTurnPhase extends MatchPhase {
 
     @Override
     public MatchPhase getNextPhase() {
-        return new OpponentsTurnPhase(getDaoFactory());
+        return new OpponentsTurnPhase(getDaoFactory(), getOpponentManager());
     }
 
     @Override

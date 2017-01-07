@@ -6,6 +6,8 @@ import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.match.MatchHelper;
 import com.hwr_goes_beuth.cardz.match.MatchPhase;
 
@@ -14,10 +16,10 @@ import com.hwr_goes_beuth.cardz.match.MatchPhase;
  */
 public class OpponentsTurnPhase extends MatchPhase {
 
-    private boolean drewCard;
+    private boolean completed;
 
-    public OpponentsTurnPhase(DAOFactory daoFactory) {
-        super(daoFactory);
+    public OpponentsTurnPhase(DAOFactory daoFactory, OpponentManager opponentManager) {
+        super(daoFactory, opponentManager);
     }
 
     @Override
@@ -29,21 +31,25 @@ public class OpponentsTurnPhase extends MatchPhase {
     public void run() {
         User currentUser = getDaoFactory().getUserDAO().getOrCreateCurrentUser();
         Match currentMatch = getDaoFactory().getUserDAO().getCurrentMatch(currentUser);
-        Player opponent = getDaoFactory().getMatchDAO().getOpponent(currentMatch);
+        Player opponentPlayer = getDaoFactory().getMatchDAO().getOpponent(currentMatch);
         Player matchUser = getDaoFactory().getMatchDAO().getMatchUser(currentMatch);
 
-        MatchHelper.letPlayerDrawCards(getDaoFactory(), opponent, 1);
-        drewCard = true;
+        MatchHelper.letPlayerDrawCards(getDaoFactory(), opponentPlayer, 1);
+
+        Opponent opponent = getOpponentManager().getOpponent(opponentPlayer);
+        opponent.performMove(getDaoFactory(), opponentPlayer, getDaoFactory().getPlayerDAO().getField(matchUser));
+
+        completed = true;
     }
 
     @Override
     public boolean canGoToNextPhase() {
-        return drewCard;
+        return completed;
     }
 
     @Override
     public MatchPhase getNextPhase() {
-        return new MatchUsersTurnPhase(getDaoFactory());
+        return new MatchUsersTurnPhase(getDaoFactory(), getOpponentManager());
     }
 
     @Override

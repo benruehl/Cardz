@@ -42,17 +42,14 @@ public class MatchPresenter extends ActivityPresenter {
     @Override
     public void init() {
         loadMatchPhase();
-
-        Player opponentPlayer = getCurrentMatchOpponent();
-        Opponent opponent = mOpponentManager.getOpponent(opponentPlayer);
     }
 
     private void loadMatchPhase() {
         Collection<MatchPhase> knownMatchPhases = new ArrayList<>();
-        knownMatchPhases.add(new InitialPhase(mDAOFactory));
-        knownMatchPhases.add(new MatchUsersTurnPhase(mDAOFactory));
-        knownMatchPhases.add(new OpponentsTurnPhase(mDAOFactory));
-        knownMatchPhases.add(new EndPhase(mDAOFactory));
+        knownMatchPhases.add(new InitialPhase(mDAOFactory, mOpponentManager));
+        knownMatchPhases.add(new MatchUsersTurnPhase(mDAOFactory, mOpponentManager));
+        knownMatchPhases.add(new OpponentsTurnPhase(mDAOFactory, mOpponentManager));
+        knownMatchPhases.add(new EndPhase(mDAOFactory, mOpponentManager));
 
         for (MatchPhase phase : knownMatchPhases) {
             if (phase.getMappedPhase() == getCurrentMatch().getMatchPhase())

@@ -17,7 +17,8 @@ public class MatchHelper {
         Deck playerDeck = daoFactory.getPlayerDAO().getDeck(player);
         Hand playerHand = daoFactory.getPlayerDAO().getHand(player);
 
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < Math.min(amount, playerDeck.getCardIds().size()); i++) {
+
             long drawnCardId = playerDeck.getCardIds().get(0);
             playerHand.getCardIds().add(drawnCardId);
             playerDeck.getCardIds().remove(drawnCardId);

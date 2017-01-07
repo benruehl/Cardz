@@ -3,6 +3,7 @@ package com.hwr_goes_beuth.cardz.match.phases;
 import com.hwr_goes_beuth.cardz.R;
 import com.hwr_goes_beuth.cardz.core.app.App;
 import com.hwr_goes_beuth.cardz.core.dataAccess.DAOFactory;
+import com.hwr_goes_beuth.cardz.game.opponents.OpponentManager;
 import com.hwr_goes_beuth.cardz.match.MatchPhase;
 
 /**
@@ -10,8 +11,8 @@ import com.hwr_goes_beuth.cardz.match.MatchPhase;
  */
 public class EndPhase extends MatchPhase {
 
-    public EndPhase(DAOFactory daoFactory) {
-        super(daoFactory);
+    public EndPhase(DAOFactory daoFactory, OpponentManager opponentManager) {
+        super(daoFactory, opponentManager);
     }
 
     @Override
