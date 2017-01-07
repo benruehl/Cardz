@@ -10,6 +10,7 @@ import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.match.MatchHelper;
 import com.hwr_goes_beuth.cardz.match.MatchPhase;
 
 /**
@@ -17,8 +18,11 @@ import com.hwr_goes_beuth.cardz.match.MatchPhase;
  */
 public class MatchUsersTurnPhase extends MatchPhase {
 
+    private boolean drewCard;
+
     public MatchUsersTurnPhase(DAOFactory daoFactory) {
         super(daoFactory);
+        drewCard = false;
     }
 
     @Override
@@ -32,6 +36,9 @@ public class MatchUsersTurnPhase extends MatchPhase {
         Match currentMatch = getDaoFactory().getUserDAO().getCurrentMatch(currentUser);
         Player opponent = getDaoFactory().getMatchDAO().getOpponent(currentMatch);
         Player matchUser = getDaoFactory().getMatchDAO().getMatchUser(currentMatch);
+
+        MatchHelper.letPlayerDrawCards(getDaoFactory(), matchUser, 1);
+        drewCard = true;
 
         makeMatchUserPlayCard(matchUser);
     }
@@ -49,12 +56,12 @@ public class MatchUsersTurnPhase extends MatchPhase {
 
     @Override
     public boolean canGoToNextPhase() {
-        return false;
+        return drewCard;
     }
 
     @Override
     public MatchPhase getNextPhase() {
-        return null;
+        return new OpponentsTurnPhase(getDaoFactory());
     }
 
     @Override

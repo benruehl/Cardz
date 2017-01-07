@@ -19,14 +19,21 @@ import java.util.List;
 public class HandViewAdapter extends RecyclerView.Adapter<HandViewAdapter.ViewHolder> {
 
     private List<Card> mDataset;
+    private boolean displayCardsFaceUp;
+    private boolean canDragItems;
 
-    public HandViewAdapter(Collection<Card> dataSet) {
+    public HandViewAdapter(Collection<Card> dataSet, boolean displayCardsFaceUp) {
         mDataset = new ArrayList<>(dataSet);
+        this.displayCardsFaceUp = displayCardsFaceUp;
+        canDragItems = false;
+    }
+
+    public void setItemsDraggable() {
+        canDragItems = true;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_simple_card, parent, false);
         Resources contextResources = parent.getContext().getResources();
         SimpleCardView cardView = new SimpleCardView(parent.getContext());
         cardView.setLayoutParams(new RecyclerView.LayoutParams((int)contextResources.getDimension(R.dimen.match_card_width), (int)contextResources.getDimension(R.dimen.match_card_height)));
@@ -37,7 +44,13 @@ public class HandViewAdapter extends RecyclerView.Adapter<HandViewAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mCardView.setCard(mDataset.get(position));
+        if (displayCardsFaceUp) {
+            if (canDragItems)
+                holder.mCardView.enableDragging(cardViewDragHandler);
+
+            holder.mCardView.setCardFacedUp(mDataset.get(position));
+        } else
+            holder.mCardView.setCardFacedDown(mDataset.get(position));
     }
 
     @Override
@@ -53,4 +66,12 @@ public class HandViewAdapter extends RecyclerView.Adapter<HandViewAdapter.ViewHo
             mCardView = v;
         }
     }
+
+    private final SimpleCardView.CardViewDragHandler cardViewDragHandler = new SimpleCardView.CardViewDragHandler() {
+
+        @Override
+        public void onDragEnded() {
+            notifyDataSetChanged();
+        }
+    };
 }

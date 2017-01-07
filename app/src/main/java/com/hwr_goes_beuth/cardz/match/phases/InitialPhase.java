@@ -9,6 +9,7 @@ import com.hwr_goes_beuth.cardz.entities.Hand;
 import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.User;
+import com.hwr_goes_beuth.cardz.match.MatchHelper;
 import com.hwr_goes_beuth.cardz.match.MatchPhase;
 
 import java.util.Collections;
@@ -43,8 +44,8 @@ public class InitialPhase extends MatchPhase {
         shuffleDeck(opponent);
         shuffleDeck(matchUser);
 
-        letPlayerDrawCards(opponent, CARDS_TO_DRAW);
-        letPlayerDrawCards(matchUser, CARDS_TO_DRAW);
+        MatchHelper.letPlayerDrawCards(getDaoFactory(), opponent, CARDS_TO_DRAW);
+        MatchHelper.letPlayerDrawCards(getDaoFactory(), matchUser, CARDS_TO_DRAW);
 
         completed = true;
     }
@@ -53,19 +54,6 @@ public class InitialPhase extends MatchPhase {
         Deck playerDeck = getDaoFactory().getPlayerDAO().getDeck(player);
         Collections.shuffle(playerDeck.getCardIds());
         getDaoFactory().getDeckDAO().updateDeck(playerDeck);
-    }
-
-    private void letPlayerDrawCards(Player player, int amount) {
-        Deck playerDeck = getDaoFactory().getPlayerDAO().getDeck(player);
-        Hand playerHand = getDaoFactory().getPlayerDAO().getHand(player);
-
-        for (int i = 0; i < amount; i++) {
-            long drawnCardId = playerDeck.getCardIds().get(0);
-            playerHand.getCardIds().add(drawnCardId);
-            playerDeck.getCardIds().remove(drawnCardId);
-            getDaoFactory().getDeckDAO().updateDeck(playerDeck);
-            getDaoFactory().getHandDAO().updateHand(playerHand);
-        }
     }
 
     @Override

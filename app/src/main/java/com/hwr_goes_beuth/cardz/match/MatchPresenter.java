@@ -61,7 +61,7 @@ public class MatchPresenter extends ActivityPresenter {
     }
 
     public void runMatchPhase() {
-        while (currentPhase.canGoToNextPhase()) {
+        if (currentPhase.canGoToNextPhase()) {
             currentPhase = currentPhase.getNextPhase();
             Match currentMatch = getCurrentMatch();
             currentMatch.setMatchPhase(currentPhase.getMappedPhase());

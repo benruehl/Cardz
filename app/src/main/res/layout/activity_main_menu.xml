@@ -15,11 +15,10 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/title_small"
         android:id="@+id/imgTitle"
-        android:layout_alignBottom="@+id/start_game_button"
-        android:layout_alignParentStart="true" />
+        android:layout_centerInParent="true" />
 
     <Button
-            android:id="@+id/reset_user_data_button"
+        android:id="@+id/reset_user_data_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
