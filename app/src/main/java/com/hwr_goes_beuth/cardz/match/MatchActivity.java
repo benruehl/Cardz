@@ -116,7 +116,16 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
     private final SimpleCardView.CardViewDropHandler cardViewDropHandler = new SimpleCardView.CardViewDropHandler() {
         @Override
         public void onDroppedCard(SimpleCardView dropTarget, Card sourceCard) {
-
+            if (dropTarget == cardSlot_MatchUserLeft)
+                getPresenter().playCardToLeft(sourceCard);
+            else if (dropTarget == cardSlot_MatchUserCenterLeft)
+                getPresenter().playCardToCenterLeft(sourceCard);
+            else if (dropTarget == cardSlot_MatchUserCenter)
+                getPresenter().playCardToCenter(sourceCard);
+            else if (dropTarget == cardSlot_MatchUserCenterRight)
+                getPresenter().playCardToCenterRight(sourceCard);
+            else if (dropTarget == cardSlot_MatchUserRight)
+                getPresenter().playCardToRight(sourceCard);
         }
     };
 }

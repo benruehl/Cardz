@@ -46,7 +46,7 @@ public class HandViewAdapter extends RecyclerView.Adapter<HandViewAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (displayCardsFaceUp) {
             if (canDragItems)
-                holder.mCardView.enableDragging(cardViewDragHandler);
+                holder.mCardView.enableDragging();
 
             holder.mCardView.setCardFacedUp(mDataset.get(position));
         } else
@@ -66,12 +66,4 @@ public class HandViewAdapter extends RecyclerView.Adapter<HandViewAdapter.ViewHo
             mCardView = v;
         }
     }
-
-    private final SimpleCardView.CardViewDragHandler cardViewDragHandler = new SimpleCardView.CardViewDragHandler() {
-
-        @Override
-        public void onDragEnded() {
-            notifyDataSetChanged();
-        }
-    };
 }

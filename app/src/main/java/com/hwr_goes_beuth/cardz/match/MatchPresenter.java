@@ -72,6 +72,46 @@ public class MatchPresenter extends ActivityPresenter {
         notifyChange();
     }
 
+    public void playCardToLeft(Card cardFromHand) {
+        if (!currentPhase.canUserPerformAction())
+            return;
+
+        MatchHelper.playCardToLeft(mDAOFactory, getCurrentMatchUser(), cardFromHand);
+        notifyChange();
+    }
+
+    public void playCardToCenterLeft(Card cardFromHand) {
+        if (!currentPhase.canUserPerformAction())
+            return;
+
+        MatchHelper.playCardToCenterLeft(mDAOFactory, getCurrentMatchUser(), cardFromHand);
+        notifyChange();
+    }
+
+    public void playCardToCenter(Card cardFromHand) {
+        if (!currentPhase.canUserPerformAction())
+            return;
+
+        MatchHelper.playCardToCenter(mDAOFactory, getCurrentMatchUser(), cardFromHand);
+        notifyChange();
+    }
+
+    public void playCardToCenterRight(Card cardFromHand) {
+        if (!currentPhase.canUserPerformAction())
+            return;
+
+        MatchHelper.playCardToCenterRight(mDAOFactory, getCurrentMatchUser(), cardFromHand);
+        notifyChange();
+    }
+
+    public void playCardToRight(Card cardFromHand) {
+        if (!currentPhase.canUserPerformAction())
+            return;
+
+        MatchHelper.playCardToRight(mDAOFactory, getCurrentMatchUser(), cardFromHand);
+        notifyChange();
+    }
+
     public String getCurrentPhaseTitle() {
         return currentPhase.getPhaseTitle();
     }

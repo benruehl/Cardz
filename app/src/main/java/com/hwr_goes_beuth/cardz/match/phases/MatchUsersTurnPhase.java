@@ -65,6 +65,11 @@ public class MatchUsersTurnPhase extends MatchPhase {
     }
 
     @Override
+    public boolean canUserPerformAction() {
+        return drewCard;
+    }
+
+    @Override
     public com.hwr_goes_beuth.cardz.entities.enums.MatchPhase getMappedPhase() {
         return com.hwr_goes_beuth.cardz.entities.enums.MatchPhase.MatchUsersTurn;
     }

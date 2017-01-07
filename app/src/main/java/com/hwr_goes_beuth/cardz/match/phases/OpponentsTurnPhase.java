@@ -47,6 +47,11 @@ public class OpponentsTurnPhase extends MatchPhase {
     }
 
     @Override
+    public boolean canUserPerformAction() {
+        return false;
+    }
+
+    @Override
     public com.hwr_goes_beuth.cardz.entities.enums.MatchPhase getMappedPhase() {
         return com.hwr_goes_beuth.cardz.entities.enums.MatchPhase.OpponentsTurn;
     }

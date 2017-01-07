@@ -20,6 +20,7 @@ public abstract class MatchPhase {
     public abstract void run();
     public abstract boolean canGoToNextPhase();
     public abstract MatchPhase getNextPhase();
+    public abstract boolean canUserPerformAction();
     public abstract com.hwr_goes_beuth.cardz.entities.enums.MatchPhase getMappedPhase();
 
     protected DAOFactory getDaoFactory() {

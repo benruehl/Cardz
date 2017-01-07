@@ -136,16 +136,14 @@ public class SimpleCardView extends RelativeLayout {
     // Drag and Drop //
     // ############# //
 
-    public void enableDragging(CardViewDragHandler cardDragHandler) {
+    public void enableDragging() {
         canBeDragged = true;
-        this.cardDragHandler = cardDragHandler;
     }
 
     public void enableDropping(CardViewDropHandler cardDropHandler) {
         this.cardDropHandler = cardDropHandler;
     }
 
-    private CardViewDragHandler cardDragHandler;
     private CardViewDropHandler cardDropHandler;
 
     private final View.OnTouchListener onTouchListener = new View.OnTouchListener() {
@@ -192,9 +190,7 @@ public class SimpleCardView extends RelativeLayout {
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     updateViewState();
-
-                    if (cardDragHandler != null)
-                        cardDragHandler.onDragEnded();
+                    sourceView.setVisibility(VISIBLE);
                 default:
                     break;
             }
@@ -218,9 +214,5 @@ public class SimpleCardView extends RelativeLayout {
 
     public interface CardViewDropHandler {
         void onDroppedCard(SimpleCardView dropTarget, Card sourceCard);
-    }
-
-    public interface CardViewDragHandler {
-        void onDragEnded();
     }
 }
