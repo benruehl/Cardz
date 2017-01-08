@@ -118,6 +118,11 @@ public class MatchPresenter extends ActivityPresenter {
         return mDAOFactory.getHandDAO().getCards(matchUserHand);
     }
 
+    public Collection<Card> getOpponentHand() {
+        Hand opponentHand = mDAOFactory.getPlayerDAO().getHand(getCurrentMatchOpponent());
+        return mDAOFactory.getHandDAO().getCards(opponentHand);
+    }
+
     public Field getMatchUserField() {
         return mDAOFactory.getPlayerDAO().getField(getCurrentMatchUser());
     }

@@ -35,11 +35,28 @@
                 android:id="@+id/match_opponent_hand_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="6dp"
                 android:paddingBottom="25dp">
 
-                <Button
-                    android:layout_width="@dimen/match_card_width"
-                    android:layout_height="@dimen/match_card_height"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp">
+                    <Button
+                        android:id="@+id/match_opponent_deck_button"
+                        android:layout_width="60dp"
+                        android:layout_height="100dp"/>
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/match_opponent_hand"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="0"
+                    android:scrollbars="horizontal"
                     android:layout_margin="6dp"/>
             </LinearLayout>
         </RelativeLayout>

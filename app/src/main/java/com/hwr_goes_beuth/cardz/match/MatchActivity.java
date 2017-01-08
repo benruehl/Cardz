@@ -14,6 +14,7 @@ import com.hwr_goes_beuth.cardz.entities.Card;
 import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.match.handView.HandViewAdapter;
 import com.hwr_goes_beuth.cardz.match.handView.MarginItemDecoration;
+import com.hwr_goes_beuth.cardz.match.handView.OverlapItemDecoration;
 
 /**
  * Created by Project0rion on 11.12.2016.
@@ -84,6 +85,14 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
         cardSlot_OpponentCenter.setCardFacedUp(getPresenter().getCardById(opponentField.getCenterCardId()));
         cardSlot_OpponentCenterRight.setCardFacedUp(getPresenter().getCardById(opponentField.getCenterRightCardId()));
         cardSlot_OpponentRight.setCardFacedUp(getPresenter().getCardById(opponentField.getRightCardId()));
+
+        RecyclerView handView = (RecyclerView) findViewById(R.id.match_opponent_hand);
+        handView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        handView.setLayoutManager(layoutManager);
+        handView.addItemDecoration(new OverlapItemDecoration(this, R.dimen.match_card_width));
+        HandViewAdapter adapter = new HandViewAdapter(getPresenter().getOpponentHand(), false);
+        handView.setAdapter(adapter);
     }
 
     private void updateMatchUser() {
