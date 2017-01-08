@@ -41,7 +41,12 @@ public class Opponent {
         for (int i = 0; i < playableCards.size(); i++) {
             Card card = playableCards.poll();
 
-            switch (targetCardSlots.poll()) {
+            CardSlotPosition priorCardSlot = getFirstFreeCardSlot(targetCardSlots, field);
+
+            if (priorCardSlot == null)
+                return;
+
+            switch (priorCardSlot) {
                 case Left:
                     MatchHelper.playCardToLeft(daoFactory, opponentPlayer, card);
                     break;
@@ -59,6 +64,35 @@ public class Opponent {
                     break;
             }
         }
+    }
+
+    private CardSlotPosition getFirstFreeCardSlot(Collection<CardSlotPosition> cardSlots, Field opponentField) {
+        for (CardSlotPosition cardSlot : cardSlots) {
+            switch (cardSlot) {
+                case Left:
+                    if (opponentField.getLeftCardId() == 0)
+                        return cardSlot;
+                    break;
+                case CenterLeft:
+                    if (opponentField.getCenterLeftCardId() == 0)
+                        return cardSlot;
+                    break;
+                case Center:
+                    if (opponentField.getCenterCardId() == 0)
+                        return cardSlot;
+                    break;
+                case CenterRight:
+                    if (opponentField.getCenterRightCardId() == 0)
+                        return cardSlot;
+                    break;
+                case Right:
+                    if (opponentField.getRightCardId() == 0)
+                        return cardSlot;
+                    break;
+            }
+        }
+
+        return null;
     }
 
     public String getName() {
