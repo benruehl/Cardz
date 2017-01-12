@@ -54,6 +54,7 @@ public class GameSetupPresenter extends ActivityPresenter {
 
     public void setSelectedOpponent(Opponent opponent) {
         selectedOpponent = opponent;
+        notifyChange();
     }
 
     public void startMatch(Context context) {

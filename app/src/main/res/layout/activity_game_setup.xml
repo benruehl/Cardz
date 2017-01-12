@@ -9,6 +9,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/setup_title"
+        android:text="GAME SETUP"
+        android:textColor="#e0e0e0"
+        android:textSize="72px"/>
+
     <Button
         android:id="@+id/start_match_button"
         android:layout_width="match_parent"
@@ -17,19 +27,17 @@
         android:background="#50000000"
         android:text="@string/start_match_button"
         android:textColor="#FFFFFF"
-        android:layout_marginBottom="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginBottom="48dp"
         android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp" />
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <GridView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="GAME SETUP"
-        android:textColor="#e0e0e0"
-        android:textSize="72px"/>
+        android:id="@+id/opponent_grid" />
 
 </RelativeLayout>

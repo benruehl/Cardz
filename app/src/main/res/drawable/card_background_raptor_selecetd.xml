@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/card_corner_radius"/>
+            <solid android:color="@color/colorRaptorLight"/>
+            <stroke android:color="#404040" android:width="@dimen/card_stroke_thickness"/>
+        </shape>
+    </item>
+    <item android:top="@dimen/card_stroke_thickness"
+          android:left="@dimen/card_stroke_thickness"
+          android:right="@dimen/card_stroke_thickness"
+          android:bottom="@dimen/card_stroke_thickness">
+
+        <shape android:shape="rectangle">
+            <stroke android:color="@color/colorRaptor" android:width="@dimen/card_stroke_thickness"/>
+        </shape>
+    </item>
+</layer-list>
