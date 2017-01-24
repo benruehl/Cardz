@@ -1,15 +1,14 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess.SharedPreferences;
 
-
-import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
-import com.hwr_goes_beuth.cardz.entities.Match;
 import com.hwr_goes_beuth.cardz.entities.Player;
+import com.hwr_goes_beuth.cardz.entities.Match;
+import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
+import com.hwr_goes_beuth.cardz.entities.enums.Faction;
 import com.hwr_goes_beuth.cardz.entities.enums.MatchPhase;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Created by Project0rion on 19.12.2016.
- */
 public class SharedPrefsMatchDAO implements MatchDAO {
 
     private SharedPrefsDAOContext context;

@@ -1,23 +1,18 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess.SharedPreferences;
 
-import android.content.SharedPreferences;
-
-import com.google.gson.Gson;
-import com.hwr_goes_beuth.cardz.core.dataAccess.CardDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.DeckDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
 import com.hwr_goes_beuth.cardz.entities.Card;
-import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.Match;
+import com.hwr_goes_beuth.cardz.entities.Deck;
 import com.hwr_goes_beuth.cardz.entities.User;
-
-import java.util.ArrayList;
+import com.hwr_goes_beuth.cardz.core.dataAccess.CardDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.MatchDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.DeckDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.UserDAO;
+import com.hwr_goes_beuth.cardz.entities.enums.Faction;
+import com.hwr_goes_beuth.cardz.entities.enums.MatchPhase;
 import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Created by Project0rion on 19.12.2016.
- */
 public class SharedPrefsUserDAO implements UserDAO {
 
     private SharedPrefsDAOContext context;

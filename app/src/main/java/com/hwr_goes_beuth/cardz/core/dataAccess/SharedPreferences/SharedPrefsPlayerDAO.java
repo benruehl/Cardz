@@ -1,18 +1,18 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess.SharedPreferences;
 
-
-import com.hwr_goes_beuth.cardz.core.dataAccess.DeckDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.FieldDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.HandDAO;
-import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
 import com.hwr_goes_beuth.cardz.entities.Deck;
-import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.entities.Hand;
+import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.entities.Player;
+import com.hwr_goes_beuth.cardz.core.dataAccess.DeckDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.HandDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.FieldDAO;
+import com.hwr_goes_beuth.cardz.core.dataAccess.PlayerDAO;
+import com.hwr_goes_beuth.cardz.entities.enums.Faction;
+import com.hwr_goes_beuth.cardz.entities.enums.MatchPhase;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Created by Project0rion on 19.12.2016.
- */
 public class SharedPrefsPlayerDAO implements PlayerDAO {
 
     private SharedPrefsDAOContext context;

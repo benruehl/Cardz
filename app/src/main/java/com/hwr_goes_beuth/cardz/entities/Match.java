@@ -1,10 +1,10 @@
 package com.hwr_goes_beuth.cardz.entities;
 
+import java.util.List;
+import java.util.ArrayList;
+import com.hwr_goes_beuth.cardz.entities.enums.Faction;
 import com.hwr_goes_beuth.cardz.entities.enums.MatchPhase;
 
-/**
- * Created by Project0rion on 18.12.2016.
- */
 public class Match extends Entity {
 
     private MatchPhase matchPhase;
@@ -34,4 +34,5 @@ public class Match extends Entity {
     public void setOpponentId(long opponentId) {
         this.opponentId = opponentId;
     }
+
 }

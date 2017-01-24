@@ -1,13 +1,11 @@
 package com.hwr_goes_beuth.cardz.core.dataAccess;
 
 import com.hwr_goes_beuth.cardz.entities.Deck;
-import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.entities.Hand;
+import com.hwr_goes_beuth.cardz.entities.Field;
 import com.hwr_goes_beuth.cardz.entities.Player;
+import java.util.List;
 
-/**
- * Created by Project0rion on 19.12.2016.
- */
 public interface PlayerDAO {
 
     Player getPlayer(long id);
