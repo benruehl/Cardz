@@ -3,27 +3,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hwr_goes_beuth.cardz.gameSetup.GameSetupActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/setup_title"
-        android:text="GAME SETUP"
-        android:textColor="#e0e0e0"
-        android:textSize="72px"/>
-
-    <GridView
+    <ImageView
         android:layout_width="match_parent"
-        android:id="@+id/opponent_grid"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/setup_title"
-        android:layout_height="500px" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/match_background"/>
+
+    <GridLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:text="@string/choose_faction"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#202020"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:layout_below="@+id/opponent_grid"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="true"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:text="Raptor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPlayerRaptor"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/card_background_raptor" />
+
+            <Button
+                android:text="Shark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPlayerShark"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/card_background_shark" />
+        </LinearLayout>
+
+        <TextView
+            android:text="@string/choose_opponent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#202020"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:layout_below="@+id/opponent_grid"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="true"
+            android:layout_marginBottom="20dp"/>
+
+        <GridView
+            android:layout_width="match_parent"
+            android:id="@+id/opponent_grid"
+            android:layout_alignParentStart="true"
+            android:layout_height="500px" />
+
+    </GridLayout>
 
     <Button
         android:id="@+id/start_match_button"
@@ -36,45 +91,7 @@
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Bitte wähle deine Fraktion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textSize="40px"
-        android:textColor="#e0e0e0"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_below="@+id/opponent_grid"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/start_match_button">
-
-        <Button
-            android:text="Raptor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnPlayerRaptor"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:background="@drawable/card_background_raptor" />
-
-        <Button
-            android:text="Shark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnPlayerShark"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:background="@drawable/card_background_shark" />
-    </LinearLayout>
+        android:layout_margin="20dp"/>
 
 </RelativeLayout>

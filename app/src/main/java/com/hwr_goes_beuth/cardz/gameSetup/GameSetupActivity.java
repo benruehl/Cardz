@@ -30,7 +30,7 @@ public class GameSetupActivity extends PresentedActivity<GameSetupPresenter> {
 
         findViewById(R.id.btnPlayerRaptor).setOnTouchListener(changePlayerFactionListener);
         findViewById(R.id.btnPlayerShark).setOnTouchListener(changePlayerFactionListener);
-        TextView text = (TextView) findViewById(R.id.setup_title);
+
         update();
     }
 

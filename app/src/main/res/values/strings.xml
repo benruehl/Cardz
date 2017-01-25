@@ -16,6 +16,8 @@
 
     <!-- Game Setup -->
     <string name="start_match_button">Start match</string>
+    <string name="choose_faction">choose a faction</string>
+    <string name="choose_opponent">choose an opponent</string>
 
     <!-- Match -->
     <string name="match_phase_title_initial">setting up...</string>
