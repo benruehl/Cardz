@@ -7,14 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.hwr_goes_beuth.cardz.R;
 import com.hwr_goes_beuth.cardz.game.opponents.Opponent;
 
 import java.util.ArrayList;
-
-import static com.hwr_goes_beuth.cardz.entities.enums.Faction.Raptor;
 
 /**
  * Created by User on 12.01.2017.
@@ -34,7 +31,6 @@ public class GameSetupCustomAdapter extends BaseAdapter {
         opponentId=opponentButtons;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
     }
 
     @Override
@@ -70,7 +66,7 @@ public class GameSetupCustomAdapter extends BaseAdapter {
         switch (opponentId.get(position).getFaction()) {
             case Raptor:
                 if(opponentId.get(position)==_presenter.getSelectedOpponent()) {
-                    holder.btn.setBackground(ContextCompat.getDrawable(context, R.drawable.card_background_raptor_selecetd));
+                    holder.btn.setBackground(ContextCompat.getDrawable(context, R.drawable.card_background_raptor_selected));
                 } else {
                     holder.btn.setBackground(ContextCompat.getDrawable(context, R.drawable.card_background_raptor));
                 }

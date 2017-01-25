@@ -40,7 +40,7 @@ public class GameSetupPresenter extends ActivityPresenter {
 
     @Override
     public void init() {
-        selectedFaction = Faction.Shark;
+        selectedFaction = Faction.Raptor;
         selectedOpponent = mOpponentManager.getAvailableOpponents(selectedFaction).get(0);
     }
 
@@ -52,8 +52,15 @@ public class GameSetupPresenter extends ActivityPresenter {
         return selectedOpponent;
     }
 
+    public Faction getSelectedFaction() {return selectedFaction;}
+
     public void setSelectedOpponent(Opponent opponent) {
         selectedOpponent = opponent;
+        notifyChange();
+    }
+
+    public void setSelectedFaction(Faction faction) {
+        selectedFaction = faction;
         notifyChange();
     }
 
