@@ -46,8 +46,8 @@ public class AggressiveOpponentBehavior implements OpponentBehavior {
     };
 
     @Override
-    public PriorityQueue<Opponent.CardSlotPosition> prioritizeAvailableCardSlots(Field field, Field matchUserField) {
-        PriorityQueue<Opponent.CardSlotPosition> prioritizedCardSlots = new PriorityQueue<>();
+    public Collection<Opponent.CardSlotPosition> prioritizeAvailableCardSlots(Field field, Field matchUserField) {
+        Collection<Opponent.CardSlotPosition> prioritizedCardSlots = new ArrayList<>();
         prioritizedCardSlots.add(Opponent.CardSlotPosition.Center);
         prioritizedCardSlots.add(Opponent.CardSlotPosition.CenterLeft);
         prioritizedCardSlots.add(Opponent.CardSlotPosition.CenterRight);

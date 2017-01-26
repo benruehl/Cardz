@@ -49,8 +49,27 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
         cardSlot_OpponentCenterRight = ((SimpleCardView)findViewById(R.id.match_opponent_field_center_right));
         cardSlot_OpponentRight = ((SimpleCardView)findViewById(R.id.match_opponent_field_right));
 
-
+        initHandViews();
         update();
+    }
+
+    private void initHandViews() {
+        RecyclerView matchUserHandView = (RecyclerView) findViewById(R.id.match_user_hand);
+        matchUserHandView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        matchUserHandView.setLayoutManager(layoutManager);
+        matchUserHandView.addItemDecoration(new MarginItemDecoration(this, R.dimen.match_card_margin));
+        HandViewAdapter adapter = new HandViewAdapter(getPresenter().getMatchUserHand(), true);
+        adapter.setItemsDraggable();
+        matchUserHandView.setAdapter(adapter);
+
+        RecyclerView opponenthandView = (RecyclerView) findViewById(R.id.match_opponent_hand);
+        opponenthandView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        opponenthandView.setLayoutManager(layoutManager2);
+        opponenthandView.addItemDecoration(new OverlapItemDecoration(this, R.dimen.match_card_width));
+        HandViewAdapter adapter2 = new HandViewAdapter(getPresenter().getOpponentHand(), false);
+        opponenthandView.setAdapter(adapter2);
     }
 
     private final View.OnTouchListener mRunPhaseTouchListener = new View.OnTouchListener() {
@@ -87,12 +106,8 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
         cardSlot_OpponentRight.setCardFacedUp(getPresenter().getCardById(opponentField.getRightCardId()));
 
         RecyclerView handView = (RecyclerView) findViewById(R.id.match_opponent_hand);
-        handView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        handView.setLayoutManager(layoutManager);
-        handView.addItemDecoration(new OverlapItemDecoration(this, R.dimen.match_card_width));
         HandViewAdapter adapter = new HandViewAdapter(getPresenter().getOpponentHand(), false);
-        handView.setAdapter(adapter);
+        handView.swapAdapter(adapter, false);
     }
 
     private void updateMatchUser() {
@@ -113,13 +128,9 @@ public class MatchActivity extends PresentedActivity<MatchPresenter> {
         cardSlot_MatchUserRight.enableDropping(cardViewDropHandler);
 
         RecyclerView handView = (RecyclerView) findViewById(R.id.match_user_hand);
-        handView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        handView.setLayoutManager(layoutManager);
-        handView.addItemDecoration(new MarginItemDecoration(this, R.dimen.match_card_margin));
         HandViewAdapter adapter = new HandViewAdapter(getPresenter().getMatchUserHand(), true);
         adapter.setItemsDraggable();
-        handView.setAdapter(adapter);
+        handView.swapAdapter(adapter, false);
     }
 
     private final SimpleCardView.CardViewDropHandler cardViewDropHandler = new SimpleCardView.CardViewDropHandler() {

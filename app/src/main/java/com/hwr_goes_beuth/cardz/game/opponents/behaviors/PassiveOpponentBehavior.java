@@ -46,13 +46,13 @@ public class PassiveOpponentBehavior implements OpponentBehavior {
     };
 
     @Override
-    public PriorityQueue<Opponent.CardSlotPosition> prioritizeAvailableCardSlots(Field field, Field matchUserField) {
-        PriorityQueue<Opponent.CardSlotPosition> prioritizedCardSlots = new PriorityQueue<>();
-        prioritizedCardSlots.add(Opponent.CardSlotPosition.Center);
-        prioritizedCardSlots.add(Opponent.CardSlotPosition.CenterLeft);
-        prioritizedCardSlots.add(Opponent.CardSlotPosition.CenterRight);
-        prioritizedCardSlots.add(Opponent.CardSlotPosition.Left);
+    public Collection<Opponent.CardSlotPosition> prioritizeAvailableCardSlots(Field field, Field matchUserField) {
+        Collection<Opponent.CardSlotPosition> prioritizedCardSlots = new ArrayList<>();
         prioritizedCardSlots.add(Opponent.CardSlotPosition.Right);
+        prioritizedCardSlots.add(Opponent.CardSlotPosition.Left);
+        prioritizedCardSlots.add(Opponent.CardSlotPosition.CenterRight);
+        prioritizedCardSlots.add(Opponent.CardSlotPosition.CenterLeft);
+        prioritizedCardSlots.add(Opponent.CardSlotPosition.Center);
 
         return prioritizedCardSlots;
     }

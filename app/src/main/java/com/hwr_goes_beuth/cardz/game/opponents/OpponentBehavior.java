@@ -12,5 +12,5 @@ import java.util.PriorityQueue;
 public interface OpponentBehavior {
 
     PriorityQueue<Card> getCardsToPlay(Collection<Card> playableCards);
-    PriorityQueue<Opponent.CardSlotPosition> prioritizeAvailableCardSlots(Field field, Field matchUserField);
+    Collection<Opponent.CardSlotPosition> prioritizeAvailableCardSlots(Field field, Field matchUserField);
 }

@@ -8,6 +8,7 @@ import com.hwr_goes_beuth.cardz.entities.Player;
 import com.hwr_goes_beuth.cardz.entities.enums.Faction;
 import com.hwr_goes_beuth.cardz.match.MatchHelper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.PriorityQueue;
 
@@ -35,8 +36,13 @@ public class Opponent {
         Hand hand = daoFactory.getPlayerDAO().getHand(opponentPlayer);
         Collection<Card> cardsOnHand = daoFactory.getHandDAO().getCards(hand);
 
-        PriorityQueue<Card> playableCards = behavior.getCardsToPlay(cardsOnHand);
-        PriorityQueue<CardSlotPosition> targetCardSlots = behavior.prioritizeAvailableCardSlots(field, matchUserField);
+        PriorityQueue<Card> playableCards = new PriorityQueue<>();
+        Collection<CardSlotPosition> targetCardSlots = new ArrayList<>();
+
+        if (cardsOnHand.size() > 0) {
+            playableCards = behavior.getCardsToPlay(cardsOnHand);
+            targetCardSlots = behavior.prioritizeAvailableCardSlots(field, matchUserField);
+        }
 
         for (int i = 0; i < playableCards.size(); i++) {
             Card card = playableCards.poll();
