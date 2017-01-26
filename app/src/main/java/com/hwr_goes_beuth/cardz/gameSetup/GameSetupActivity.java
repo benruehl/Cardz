@@ -53,7 +53,7 @@ public class GameSetupActivity extends PresentedActivity<GameSetupPresenter> {
         ArrayList<Opponent> opponentList = new ArrayList<>(availableOpponents);
 
         GridView opponentGrid = (GridView) findViewById(R.id.opponent_grid);
-        opponentGrid.setNumColumns(availableOpponents.size());
+        opponentGrid.setNumColumns(2);
         opponentGrid.setAdapter(new GameSetupCustomAdapter(this, getPresenter(), opponentList));
 
         if(getPresenter().getSelectedOpponent().getFaction() == getPresenter().getSelectedFaction())

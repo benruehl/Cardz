@@ -18,14 +18,22 @@ public class DeckRepository {
     }
     
     public void createOpponentDeck(Player opponentPlayer) {
-        if (opponentPlayer.getName() == "Detlef")
-            createDetlefDeck(opponentPlayer);
-        else if (opponentPlayer.getName() == "Karl")
-            createKarlDeck(opponentPlayer);
-        else if (opponentPlayer.getName() == "Klaus")
-            createKlausDeck(opponentPlayer);
-        else if (opponentPlayer.getName() == "Carsten")
-            createCarstenDeck(opponentPlayer);
+        if (opponentPlayer.getName() == "Diablo")
+            createDiabloDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "TRex")
+            createTRexDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "Garth")
+            createGarthDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "Kreacher")
+            createKreacherDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "Whipper")
+            createWhipperDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "MrBubbles")
+            createMrBubblesDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "GreatWhite")
+            createGreatWhiteDeck(opponentPlayer);
+        else if (opponentPlayer.getName() == "Blade")
+            createBladeDeck(opponentPlayer);
         else
             throw new UnsupportedOperationException("there is no deck registered for opponent called" + opponentPlayer.getName());
     }
@@ -48,7 +56,7 @@ public class DeckRepository {
         addCardToDeck(raptorDeck,"Killerraptor");
     }
     
-    private void createDetlefDeck (Player opponentPlayer){
+    private void createDiabloDeck (Player opponentPlayer){
         Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
         addCardToDeck(opponentDeck,"Killerraptor");
         addCardToDeck(opponentDeck,"Killerraptor");
@@ -57,7 +65,34 @@ public class DeckRepository {
         addCardToDeck(opponentDeck,"Grossraptor");
     }
     
-    private void createKarlDeck (Player opponentPlayer){
+    private void createTRexDeck (Player opponentPlayer){
+        Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Grossraptor");
+    }
+    
+    private void createGarthDeck (Player opponentPlayer){
+        Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
+        addCardToDeck(opponentDeck,"Killerraptor");
+        addCardToDeck(opponentDeck,"Killerraptor");
+        addCardToDeck(opponentDeck,"Killerraptor");
+        addCardToDeck(opponentDeck,"Grossraptor");
+        addCardToDeck(opponentDeck,"Grossraptor");
+    }
+    
+    private void createKreacherDeck (Player opponentPlayer){
+        Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Assassinator");
+        addCardToDeck(opponentDeck,"Grossraptor");
+    }
+    
+    private void createWhipperDeck (Player opponentPlayer){
         Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
         addCardToDeck(opponentDeck,"Hammerhai");
         addCardToDeck(opponentDeck,"Hammerhai");
@@ -66,16 +101,25 @@ public class DeckRepository {
         addCardToDeck(opponentDeck,"Tigerhai");
     }
     
-    private void createKlausDeck (Player opponentPlayer){
+    private void createMrBubblesDeck (Player opponentPlayer){
         Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
-        addCardToDeck(opponentDeck,"Assassinator");
-        addCardToDeck(opponentDeck,"Assassinator");
-        addCardToDeck(opponentDeck,"Assassinator");
-        addCardToDeck(opponentDeck,"Assassinator");
-        addCardToDeck(opponentDeck,"Grossraptor");
+        addCardToDeck(opponentDeck,"Hammerhai");
+        addCardToDeck(opponentDeck,"Hammerhai");
+        addCardToDeck(opponentDeck,"Hammerhai");
+        addCardToDeck(opponentDeck,"Hammerhai");
+        addCardToDeck(opponentDeck,"Tigerhai");
     }
     
-    private void createCarstenDeck (Player opponentPlayer){
+    private void createGreatWhiteDeck (Player opponentPlayer){
+        Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
+        addCardToDeck(opponentDeck,"Hammerhai");
+        addCardToDeck(opponentDeck,"Hammerhai");
+        addCardToDeck(opponentDeck,"Tigerhai");
+        addCardToDeck(opponentDeck,"Tigerhai");
+        addCardToDeck(opponentDeck,"Tigerhai");
+    }
+    
+    private void createBladeDeck (Player opponentPlayer){
         Deck opponentDeck = daoFactory.getDeckDAO().getDeck(opponentPlayer.getDeckId());
         addCardToDeck(opponentDeck,"Hammerhai");
         addCardToDeck(opponentDeck,"Hammerhai");

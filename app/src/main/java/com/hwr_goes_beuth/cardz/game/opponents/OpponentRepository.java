@@ -10,10 +10,14 @@ public class OpponentRepository {
 
     public List<Opponent> getKnownOpponents() {
         List<Opponent> knownOpponents = new ArrayList<>();
-        knownOpponents.add(new Opponent("Detlef", Faction.Raptor, new AggressiveOpponentBehavior()));
-        knownOpponents.add(new Opponent("Karl", Faction.Shark, new PassiveOpponentBehavior()));
-        knownOpponents.add(new Opponent("Klaus", Faction.Raptor, new PassiveOpponentBehavior()));
-        knownOpponents.add(new Opponent("Carsten", Faction.Shark, new AggressiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("Diablo", Faction.Raptor, new AggressiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("TRex", Faction.Raptor, new PassiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("Garth", Faction.Raptor, new AggressiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("Kreacher", Faction.Raptor, new PassiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("Whipper", Faction.Shark, new PassiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("MrBubbles", Faction.Shark, new PassiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("GreatWhite", Faction.Shark, new AggressiveOpponentBehavior()));
+        knownOpponents.add(new Opponent("Blade", Faction.Shark, new AggressiveOpponentBehavior()));
         return knownOpponents;
     }
 }
